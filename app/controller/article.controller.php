@@ -20,7 +20,7 @@ class ArticleController {
     }
     
     public function edit() {
-        $article = new Article();
+        $article = new ArticleEntity();
         if(isset($_REQUEST['id'])) {
             $article = $this->articleModel->getOne($_REQUEST['id']);
         }
@@ -28,29 +28,20 @@ class ArticleController {
     }
 
     public function create() {
-        $article = new Article();
-
+        $article = new ArticleEntity();
+        
         require_once (dirname(__FILE__).'/../view/article/articleForm.php');
     }
     
     public function save() {
-        /*echo "--";
-        var_dump($article);
-        echo "--";*/
         $article = new ArticleEntity();
-        $article->id = $_REQUEST['id'];
-        $article->name = $_REQUEST['name'];
-        $article->description = $_REQUEST['description'];      
-        $article->picture = $_REQUEST['picture'];
-        $article->idCategory = $_REQUEST['idCategory'];
-
-        /*echo getType($article->id);
-        echo getType($article->name);
-        echo getType($article->description);
-        echo getType($article->picture);
-        echo getType($article->idCategory);*/
-
-        $article->id > 0 ? $this->articleModel->update($article) : $this->articleModel->insert($article);
+        $article->setId($_REQUEST['id']);
+        $article->setName($_REQUEST['name']);
+        $article->setDescription($_REQUEST['description']);      
+        $article->setPicture($_REQUEST['picture']);
+        $article->setIdCategory($_REQUEST['idCategory']);
+        
+        $article->getId() > 0 ? $this->articleModel->update($article) : $this->articleModel->insert($article);
         
         header('Location: index.php');
     }

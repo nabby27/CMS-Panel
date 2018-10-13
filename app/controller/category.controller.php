@@ -18,7 +18,7 @@ class CategoryController {
     }
     
     public function edit() {
-        $category = new Category();
+        $category = new CategoryEntity();
         if(isset($_REQUEST['id'])) {
             $category = $this->categoryModel->getOne($_REQUEST['id']);
         }
@@ -26,17 +26,18 @@ class CategoryController {
     }
 
     public function create() {
-        $category = new Category();
+        $category = new CategoryEntity();
 
         require_once (dirname(__FILE__).'/../view/category/categoryForm.php');
     }
     
     public function save() {
-        $category = new Category();
-        $category->id = $_REQUEST['id'];
-        $category->idCategoryFather = $_REQUEST['idCategoryFather'];
-        $category->name = $_REQUEST['name'];
-        $category->id > 0 ? $this->categoryModel->update($category) : $this->categoryModel->insert($category);
+        $category = new CategoryEntity();
+        $category->setId( (int) $_REQUEST['id']);
+        $category->setIdCategoryFather($_REQUEST['idCategoryFather']);
+        $category->setName($_REQUEST['name']);
+        
+        $category->getId() > 0 ? $this->categoryModel->update($category) : $this->categoryModel->insert($category);
         
         header('Location: index.php');
     }

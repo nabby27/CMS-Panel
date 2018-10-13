@@ -71,11 +71,11 @@ class Article {
 				    WHERE article_id 		= ?";
             $stm = $this->pdo->prepare($sql);
 			$stm->execute(array(
-					$data->name,                        
-                    $data->description,
-                    $data->picture, 
-					$data->idCategory,
-					$data->id
+					$data->getName(),                        
+                    $data->getDescription(),
+                    $data->getPicture(), 
+					$data->getIdCategory(),
+					$data->getId()
 				));
 			return true;
 		} catch (Exception $e) {
@@ -91,10 +91,10 @@ class Article {
                     VALUES (?, ?, ?, ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->execute(array(
-					$data->name,
-                    $data->description,
-                    $data->picture, 
-					$data->idCategory
+					$data->getName(),
+                    $data->getDescription(),
+                    $data->getPicture(), 
+					$data->getIdCategory()
 				));
 			return true;
 		} catch (Exception $e) {

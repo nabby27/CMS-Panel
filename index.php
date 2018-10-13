@@ -1,5 +1,5 @@
 <?php
-//TODO: declare(strict_types = 1);
+declare(strict_types = 1);
 
 require_once (dirname(__FILE__).'/app/core/db.conf.php');
 
@@ -11,7 +11,7 @@ if(!isset($_REQUEST['c'])) {
     require_once (dirname(__FILE__)."/app/controller/$controller.controller.php");
     $controller = ucwords($controller) . 'Controller';
     $controller = new $controller;
-    $controller->index();    
+    $controller->index();
 }
 else {
     $controller = strtolower($_REQUEST['c']);

@@ -21,7 +21,7 @@ class LinkController {
     }
     
     public function edit() {
-        $link = new Link();
+        $link = new LinkEntity();
         if(isset($_REQUEST['id'])) {
             $link = $this->linkModel->getOne($_REQUEST['id']);
         }
@@ -29,19 +29,19 @@ class LinkController {
     }
 
     public function create() {
-        $link = new Link();
+        $link = new LinkEntity();
 
         require_once (dirname(__FILE__).'/../view/link/linkForm.php');
     }
     
     public function save() {
-        $link = new Link();
-        $link->id = $_REQUEST['id'];
-        $link->name = $_REQUEST['name'];      
-        $link->link = $_REQUEST['link'];
-        $link->idArticle = $_REQUEST['idArticle'];
+        $link = new LinkEntity();
+        $link->setId($_REQUEST['id']);
+        $link->setName($_REQUEST['name']);      
+        $link->setLink($_REQUEST['link']);
+        $link->setIdArticle($_REQUEST['idArticle']);
 
-        $link->id > 0 ? $this->linkModel->update($link) : $this->linkModel->insert($link);
+        $link->getId() > 0 ? $this->linkModel->update($link) : $this->linkModel->insert($link);
         
         header('Location: index.php');
     }

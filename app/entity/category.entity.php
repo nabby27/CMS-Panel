@@ -2,7 +2,7 @@
 
 class CategoryEntity {	
 	//class properties
-	private $id;
+	private $id; 
 	private $idCategoryFather;
 	private $name;
 	
@@ -17,17 +17,24 @@ class CategoryEntity {
 			$this->idCategoryFather = (int) $this->category_father_id;
 			unset($this->category_id);
 			unset($this->category_father_id);
+			/*settype($id, "integer");
+			settype($idCategoryFather, "integer");
+			settype($name, "string");*/
 		}
 		catch(Exception $e) {
 			die($e->getMessage());
 		}
 	}
 
-	public function getId() : int {
+	public function getId() {
 		return $this->id;
 	}
 
-	public function getIdCategoryFather() : int {
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	public function getIdCategoryFather() {
 		return $this->idCategoryFather;
 	}
 
@@ -35,7 +42,7 @@ class CategoryEntity {
 		$this->idCategoryFather = $idCategoryFather;
 	}
 
-	public function getName() : string {
+	public function getName() {
 		return $this->name;
 	}
 

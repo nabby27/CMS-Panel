@@ -21,7 +21,7 @@ class PictureController {
     }
 
     public function edit() {
-        $picture = new Picture();
+        $picture = new PictureEntity();
         if(isset($_REQUEST['id'])) {
             $picture = $this->pictureModel->getOne($_REQUEST['id']);
         }
@@ -29,19 +29,19 @@ class PictureController {
     }
 
     public function create() {
-        $picture = new Picture();
+        $picture = new PictureEntity();
 
         require_once (dirname(__FILE__).'/../view/picture/pictureForm.php');
     }
     
     public function save() {
-        $picture = new Picture();
-        $picture->id = $_REQUEST['id'];
-        $picture->picture = $_REQUEST['picture'];
-        $picture->description = $_REQUEST['description'];      
-        $picture->idArticle = $_REQUEST['idArticle'];
+        $picture = new PictureEntity();
+        $picture->setId($_REQUEST['id']);
+        $picture->setPicture($_REQUEST['picture']);
+        $picture->setDescription($_REQUEST['description']);      
+        $picture->setIdArticle($_REQUEST['idArticle']);
 
-        $picture->id > 0 ? $this->pictureModel->update($picture) : $this->pictureModel->insert($picture);
+        $picture->getId() > 0 ? $this->pictureModel->update($picture) : $this->pictureModel->insert($picture);
         
         header('Location: index.php');
     }

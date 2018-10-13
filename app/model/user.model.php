@@ -60,14 +60,14 @@ class User {
 				    WHERE user_id 		= ?";
             $stm = $this->pdo->prepare($sql);
 			$stm->execute(array(
-					$data->name,                        
-                    $data->surname,
-                    $data->email, 
-					$data->telephon,
-					$data->address,
-					$data->password,
-					$data->idType,
-					$data->id
+					$data->getName(),                        
+                    $data->getSurname(),
+                    $data->getEmail(), 
+					$data->getTelephon(),
+					$data->getAddress(),
+					$data->getPassword(),
+					$data->getIdType(),
+					$data->getId()
                 ));
 		} catch (Exception $e) {
 			die($e->getMessage());
@@ -80,13 +80,13 @@ class User {
                     VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->execute(array(
-					$data->name,                        
-                    $data->surname,
-                    $data->email, 
-					$data->telephon,
-					$data->address,
-					$data->password,
-					$data->idType,
+					$data->getName(),                        
+                    $data->getSurname(),
+                    $data->getEmail(), 
+					$data->getTelephon(),
+					$data->getAddress(),
+					$data->getPassword(),
+					$data->getIdType(),
                 ));
 		} catch (Exception $e) {
 			die($e->getMessage());

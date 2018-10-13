@@ -24,11 +24,15 @@ class LinkEntity {
 		}
 	}
 
-	public function getId() : int {
+	public function getId() {
 		return $this->id;
 	}
 
-	public function getName() : string {
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	public function getName() {
 		return $this->name;
 	}
 
@@ -36,7 +40,7 @@ class LinkEntity {
 		$this->name = $name;
 	}
 
-	public function getLink() : string {
+	public function getLink() {
 		return $this->link;
 	}
 
@@ -44,7 +48,7 @@ class LinkEntity {
 		$this->link = $link;
 	}
 
-	public function getIdArticle() : int {
+	public function getIdArticle() {
 		return $this->idArticle;
 	}
 

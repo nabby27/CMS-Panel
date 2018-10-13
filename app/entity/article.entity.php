@@ -25,36 +25,40 @@ class ArticleEntity {
 		}
 	}
 
-	public function getId() : int {
-		return $this->id;
-	}
-	
-	public function getName() : string {
-		return $this->name;
+	public function getId() {
+		return $this->id != null ? $this->id : null;
 	}
 
-	public function setName(string $name) {
+	public function setId($id) {
+		$this->id = $id;
+	}
+	
+	public function getName() {
+		return $this->name != null ? $this->name : null;
+	}
+
+	public function setName(String $name) {
 		$this->name = $name;
 	}
 	
-	public function getDescription(): string {
-		return $this->description;
+	public function getDescription() {
+		return $this->description != null ? $this->description : null;
 	}
 
-	public function setDescription(string $description) {
+	public function setDescription(String $description) {
 		$this->description = $description;
 	}
 
-	public function getPicture() : string {
-		return $this->picture;
+	public function getPicture() {
+		return $this->picture != null ? $this->picture : null;
 	}
 
-	public function setPicture(string $picture) {
+	public function setPicture(String $picture) {
 		$this->picture = $picture;
 	}
 
-	public function getIdCategory() : int {
-		return $this->idCategory;
+	public function getIdCategory() {
+		return $this->idCategory != null ? $this->idCategory : null;
 	}
 
 	public function setIdCateogory(int $idCategory) {

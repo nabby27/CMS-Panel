@@ -68,10 +68,10 @@ class Link {
 				    WHERE link_id 		= ?";
             $stm = $this->pdo->prepare($sql);
 			$stm->execute(array(
-					$data->name, 
-                    $data->link,
-					$data->idArticle,
-					$data->id
+					$data->getName(), 
+                    $data->getLink(),
+					$data->getIdArticle(),
+					$data->getId()
                 ));
 		} catch (Exception $e) {
 			die($e->getMessage());
@@ -84,9 +84,9 @@ class Link {
                     VALUES (?, ?, ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->execute(array(
-					$data->name,
-					$data->link, 
-					$data->idArticle
+					$data->getName(),
+					$data->getLink(), 
+					$data->getIdArticle()
                 ));
 		} catch (Exception $e) {
 			die($e->getMessage());

@@ -20,7 +20,7 @@ class UserController {
     }
     
     public function edit() {
-        $user = new User();
+        $user = new UserEntity();
         if(isset($_REQUEST['id'])) {
             $user = $this->userModel->getOne($_REQUEST['id']);
         }
@@ -28,23 +28,23 @@ class UserController {
     }
 
     public function create() {
-        $user = new User();
+        $user = new UserEntity();
 
         require_once (dirname(__FILE__).'/../view/user/userForm.php');
     }
     
     public function save() {
-        $user = new User();
-        $user->id = $_REQUEST['id'];
-        $user->name = $_REQUEST['name'];
-        $user->surname = $_REQUEST['surname'];      
-        $user->email = $_REQUEST['email'];
-        $user->telephon = $_REQUEST['telephon'];
-        $user->address = $_REQUEST['address'];
-        $user->password = $_REQUEST['password'];
-        $user->idType = $_REQUEST['idType'];
+        $user = new UserEntity();
+        $user->setId($_REQUEST['id']);
+        $user->setName($_REQUEST['name']);
+        $user->setSurname($_REQUEST['surname']);      
+        $user->setEmail($_REQUEST['email']);
+        $user->setTelephon($_REQUEST['telephon']);
+        $user->setAddress($_REQUEST['address']);
+        $user->setPassword($_REQUEST['password']);
+        $user->setIdType($_REQUEST['idType']);
 
-        $user->id > 0 ? $this->userModel->update($user) : $this->userModel->insert($user);
+        $user->getId() > 0 ? $this->userModel->update($user) : $this->userModel->insert($user);
         
         header('Location: index.php');
     }

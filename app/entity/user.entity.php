@@ -29,11 +29,15 @@ class UserEntity {
 		}
 	}
 
-	public function getId() : int {
+	public function getId() {
 		return $this->id;
 	}
 
-	public function getUsername() : string {
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	public function getUsername() {
 		return $this->username;
 	}
 
@@ -41,7 +45,7 @@ class UserEntity {
 		$this->username = $username;
 	}
 
-	public function getName() : string {
+	public function getName() {
 		return $this->name;
 	}
 
@@ -49,7 +53,7 @@ class UserEntity {
 		$this->name = $name;
 	}
 
-	public function getSurname() : string {
+	public function getSurname() {
 		return $this->surname;
 	}
 
@@ -57,7 +61,7 @@ class UserEntity {
 		$this->surname = $surname;
 	}
 
-	public function getEmail() : string {
+	public function getEmail() {
 		return $this->email;
 	}
 
@@ -65,7 +69,7 @@ class UserEntity {
 		$this->email = $email;
 	}
 
-	public function getTelephon() : int {
+	public function getTelephon() {
 		return $this->telephon;
 	}
 
@@ -73,7 +77,7 @@ class UserEntity {
 		$this->telephon = $telephon;
 	}
 
-	public function getAddress() : string {
+	public function getAddress() {
 		return $this->address;
 	}
 
@@ -81,7 +85,7 @@ class UserEntity {
 		$this->address = $address;
 	}
 
-	public function getPassword() : string {
+	public function getPassword() {
 		return $this->password;
 	}
 
@@ -89,7 +93,7 @@ class UserEntity {
 		$this->password = $password;
 	}
 
-	public function getIdType() : int {
+	public function getIdType() {
 		return $this->idType;
 	}
 

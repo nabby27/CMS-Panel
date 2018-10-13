@@ -54,8 +54,8 @@ class TypeUser {
 				    WHERE type_id 		= ?";
             $stm = $this->pdo->prepare($sql);
 			$stm->execute(array(
-					$data->typeUser,                        
-					$data->id
+					$data->tgetTpeUser(),                        
+					$data->getId()
                 ));
 		} catch (Exception $e) {
 			die($e->getMessage());
@@ -68,7 +68,7 @@ class TypeUser {
                     VALUES (?)";
             $stm = $this->pdo->prepare($sql);
             $stm->execute(array(
-					$data->typeUser
+					$data->getTypeUser()
                 ));
 		} catch (Exception $e) {
 			die($e->getMessage());

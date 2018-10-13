@@ -67,9 +67,9 @@ class Category {
 				    WHERE category_id 		= ?";
             $stm = $this->pdo->prepare($sql);
 			$stm->execute(array(
-                    $data->idCategoryFather,
-                    $data->name,
-                    $data->id
+                    $data->getIdCategoryFather(),
+                    $data->getName(),
+                    $data->getId()
                 ));
 		} catch (Exception $e) {
 			die($e->getMessage());
@@ -78,13 +78,14 @@ class Category {
 
 	public function insert($data) {
 		try {
+
             $sql = "INSERT INTO CMS_CATEGORIES (category_father_id, name)
                     VALUES (?, ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->execute(array(
-                    $data->idCategoryFather,
-                    $data->name
-                ));
+                    $data->getIdCategoryFather(),
+                    $data->getName()
+				));
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}

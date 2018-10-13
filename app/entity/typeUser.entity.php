@@ -22,11 +22,15 @@ class TypeUserEntity {
 		}
 	}
 
-	public function getId() : int {
+	public function getId() {
 		return $this->id;
 	}
 
-	public function getTypeUser() : string {
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	public function getTypeUser() {
 		return $this->typeUser;
 	}
 

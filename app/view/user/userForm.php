@@ -43,7 +43,7 @@
     <div class="form-group">
       <label for="inputArticle">Type of user:</label>
       <select id="inputArticle" name="idArticle" class="form-control" required>
-        <option>Choose...</option>
+        <option value="" disabled selected>Choose...</option>
         <?php foreach($this->typeUserModel->getAll() as $typeUser): ?>
             <option value="<?php echo $typeUser->getId(); ?>" <?php if ($typeUser->getId() == $user->getIdType()) echo 'selected'; ?> >
                 <?php echo $typeUser->getTypeUser(); ?> 
@@ -55,14 +55,6 @@
     <hr/>
     
     <div class="text-right">
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary" type="submit">Save</button>
     </div>
 </form>
-
-<script>
-    $(document).ready(function(){
-        $("#frm-user").submit(function(){
-            return $(this).validate();
-        });
-    })
-</script>

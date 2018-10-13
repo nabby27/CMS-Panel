@@ -1,5 +1,5 @@
 <h1 class="page-header">
-    <?php echo ($picture->getId() != null) ? $picture->getId() : 'New picture'; ?>
+    <?php echo $picture->getId() != null ? $picture->getId() : 'New picture'; ?>
 </h1>
 
 <form id="frm-picture" action="?c=picture&a=save" method="post" enctype="multipart/form-data">
@@ -13,13 +13,13 @@
 
     <div class="form-group">
         <label>Descriptión:</label>
-        <textarea class="form-control" rows="6" name="description"><?php echo $picture->getDescription(); ?></textarea>
+        <textarea class="form-control" rows="6" name="description" placeholder="Describe yourself here..."><?php echo $picture->getDescription(); ?></textarea>
     </div>
 
     <div class="form-group">
       <label for="inputArticle">Article:</label>
       <select id="inputArticle" name="idArticle" class="form-control" required>
-        <option>Choose...</option>
+        <option value="" disabled selected>Choose...</option>
         <?php foreach($this->articleModel->getAll() as $article): ?>
             <option value="<?php echo $article->getId(); ?>" <?php if ($article->getId() == $picture->getId()) echo 'selected'; ?> >
                 <?php echo $article->getName(); ?> 
@@ -31,14 +31,6 @@
     <hr/>
     
     <div class="text-right">
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary" type="submit">Save</button>
     </div>
 </form>
-
-<script>
-    $(document).ready(function(){
-        $("#frm-picture").submit(function(){
-            return $(this).validate();
-        });
-    })
-</script>

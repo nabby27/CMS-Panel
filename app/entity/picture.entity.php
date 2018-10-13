@@ -22,11 +22,15 @@ class PictureEntity {
 		}
 	}
 
-	public function getId() : int {
+	public function getId() {
 		return $this->id;
 	}
 
-	public function getPicture() : string {
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	public function getPicture() {
 		return $this->picture;
 	}
 
@@ -34,7 +38,7 @@ class PictureEntity {
 		$this->picture = $picture;
 	}
 
-	public function getDescription() : string {
+	public function getDescription() {
 		return $this->description;
 	}
 
@@ -42,7 +46,7 @@ class PictureEntity {
 		$this->description = $description;
 	}
 
-	public function getIdArticle() : int {
+	public function getIdArticle() {
 		return $this->idArticle;
 	}
 

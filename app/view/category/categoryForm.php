@@ -8,7 +8,7 @@
     <div class="form-group">
       <label for="inputCategoryFather">Category father:</label>
       <select id="inputCategoryFather" name="idCategoryFather" class="form-control" required>
-        <option>Choose...</option>
+        <option value="" disabled selected>Choose...</option>
         <?php foreach($this->getAll() as $category2): ?>
             <option value="<?php echo $category2->getId(); ?>" <?php if ($category2->getId() == $category->getIdCategoryFather()) echo 'selected'; ?> >
                 <?php echo $category2->getName(); ?> 
@@ -25,14 +25,6 @@
     <hr/>
     
     <div class="text-right">
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary" type="submit">Save</button>
     </div>
 </form>
-
-<script>
-    $(document).ready(function(){
-        $("#frm-category").submit(function(){
-            return $(this).validate();
-        });
-    })
-</script>

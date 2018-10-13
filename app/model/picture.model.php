@@ -68,10 +68,10 @@ class Picture {
 				    WHERE picture_id 		= ?";
             $stm = $this->pdo->prepare($sql);
 			$stm->execute(array(
-					$data->picture, 
-                    $data->description,
-					$data->idArticle,
-					$data->id
+					$data->getPicture(), 
+                    $data->getDescription(),
+					$data->getIdArticle(),
+					$data->getId()
                 ));
 		} catch (Exception $e) {
 			die($e->getMessage());
@@ -84,9 +84,9 @@ class Picture {
                     VALUES (?, ?, ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->execute(array(
-					$data->picture, 
-					$data->description,
-					$data->idArticle
+					$data->getPicture(), 
+					$data->getDescription(),
+					$data->getIdArticle()
                 ));
 		} catch (Exception $e) {
 			die($e->getMessage());

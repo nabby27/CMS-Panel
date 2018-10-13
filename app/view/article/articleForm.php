@@ -12,7 +12,7 @@
     
     <div class="form-group">
         <label>Descriptión:</label>
-        <textarea class="form-control" rows="6" name="description"><?php echo $article->getDescription(); ?></textarea>
+        <textarea class="form-control" rows="6" name="description" placeholder="Describe new article here..."><?php echo $article->getDescription(); ?></textarea>
     </div>
 
     <div class="form-group">
@@ -23,7 +23,7 @@
     <div class="form-group">
       <label for="inputCategory">Category:</label>
       <select id="inputCategory" name="idCategory" class="form-control" required>
-        <option>Choose...</option>
+        <option value="" disabled selected>Choose...</option>
         <?php foreach($this->categoryModel->getAll() as $category): ?>
             <option  value="<?php echo $category->getId(); ?>" <?php if ($category->getId() == $article->getId()) echo 'selected'; ?> >
                 <?php echo $category->getName(); ?> 
@@ -35,14 +35,6 @@
     <hr/>
     
     <div class="text-right">
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary" type="submit">Save</button>
     </div>
 </form>
-
-<script>
-    $(document).ready(function(){
-        $("#frm-article").submit(function(){
-            return $(this).validate();
-        });
-    })
-</script>

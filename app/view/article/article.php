@@ -4,10 +4,12 @@
     <thead class="thead-light">
         <th class="text-center">ID</th><th class="text-center">NAME</th><th class="text-center">DESCRIPTION</th>
             <th class="text-center">PICTURE</th><th class="text-center">CATEGORY</th>
-        <th class="text-center"><i class="far fa-edit"></i></th>
+            <th class="text-center"><i class="fas fa-link"></i></th>
+            <th class="text-center"><i class="far fa-images"></i></th>
+            <th class="text-center"><i class="far fa-edit"></i></th>
         <th class="text-center"><i class="fas fa-trash-alt"></i></th>
     </thead>
-    <?php foreach($this->getAll() as $article): ?>
+    <?php foreach($articles as $article): ?>
         <tr>
             <td class="text-center"><?php echo $article->getId(); ?></td>
             <td class="text-center"><?php echo $article->getName(); ?></td>
@@ -17,6 +19,12 @@
                 <?php if ($category->getId() == $article->getIdCategory()) echo "<td>".$category->getName()."</td>"; ?>
             <?php endforeach; ?>
 
+            <td class="text-center">
+                <a class="btn btn-info" href="?c=link&a=list&idArticle=<?php echo $article->getId(); ?>">Links</a>
+            </td>
+            <td class="text-center">
+                <a class="btn btn-info" href="?c=picture&a=list&idArticle=<?php echo $article->getId(); ?>">Pictures</a>
+            </td>
             <td class="text-center">
                 <a class="btn btn-warning" href="?c=article&a=edit&id=<?php echo $article->getId(); ?>">Edit</a>
             </td>

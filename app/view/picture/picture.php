@@ -7,7 +7,7 @@
         <th class="text-center"><i class="far fa-edit"></i></th>
         <th class="text-center"><i class="fas fa-trash-alt"></i></th>
     </thead>
-    <?php foreach($this->getAll() as $picture): ?>
+    <?php foreach($pictures as $picture): ?>
         <tr>
             <td class="text-center"><?php echo $picture->getId(); ?></td>
             <td class="text-center"><?php echo $picture->getPicture(); ?></td>

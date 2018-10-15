@@ -10,6 +10,7 @@ class CategoryController {
     }
     
     public function index() {
+        $categories = $this->getAll();
         require_once (Settings::PATH['views'].'/category/category.php');
     }
 

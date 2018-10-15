@@ -12,11 +12,19 @@ class ArticleController {
     }
     
     public function index() {
+        $articles = $this->getAll();
         require_once (Settings::PATH['views'].'/article/article.php');
     }
 
     public function getAll() {
         return $this->articleModel->getAll();
+    }
+
+    public function list() {
+        if(isset($_REQUEST['idCategory'])) {
+            $articles = $this->articleModel->getByCategoryId($_REQUEST['idCategory']);
+        }
+        require_once (Settings::PATH['views'].'/article/article.php');
     }
     
     public function edit() {

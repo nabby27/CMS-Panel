@@ -41,9 +41,8 @@ class Article {
 		try {
             $sql = "SELECT * FROM CMS_ARTICLES WHERE category_id = ?";
 			$stm = $this->pdo->prepare($sql);          
-            $stm->execute(array($id));
-			$stm->setFetchMode(PDO::FETCH_CLASS, 'ArticleEntity');
-			return $stm->fetch();
+			$stm->execute(array($id));
+			return $stm->fetchAll(PDO::FETCH_CLASS, 'ArticleEntity');
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}

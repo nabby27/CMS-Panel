@@ -21,12 +21,12 @@
             <?php foreach($this->typeUserModel->getAll() as $typeUser): ?>
                 <?php if ($typeUser->getId() == $user->getIdType()) echo "<td>".$typeUser->getTypeUser()."</td>"; ?>
             <?php endforeach; ?>
-
+            
             <td class="text-center">
                 <a class="btn btn-warning" href="?c=user&a=edit&id=<?php echo $user->getId(); ?>">Edit</a>
             </td>
             <td class="text-center">
-                <a class="btn btn-danger" onclick="javascript:return confirm('Do you want delete this user?');" href="?c=user&a=delete&id=<?php echo $user->getId(); ?>">Delete</a>
+                <a class="btn btn-danger <?php if ($user->getId() == 1) echo 'disabled'?>" onclick="javascript:return confirm('Do you want delete this user?');" href="?c=user&a=delete&id=<?php echo $user->getId(); ?>">Delete</a>
             </td>
         </tr>
     <?php endforeach; ?>

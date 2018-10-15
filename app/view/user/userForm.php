@@ -1,5 +1,5 @@
 <h1 class="page-header">
-    <?php echo $user->getId() != null ? $user->getUsername() : 'New user'; ?>
+    <?php echo $user->getId() != null ? $user->getId() : 'New user'; ?>
 </h1>
 
 <form action="?c=user&a=save" method="post" enctype="multipart/form-data">
@@ -37,12 +37,13 @@
 
     <div class="form-group">
         <label>Password:</label>
-        <input type="number" name="password" value="<?php echo $user->getPassword(); ?>" class="form-control" placeholder="Password" required>
+        <input type="number" name="password" value="<?php echo $user->getPassword(); ?>" class="form-control" placeholder="Password" required
+            <?php if ($user->getId() == 1) echo 'disabled'?> >
     </div>
 
     <div class="form-group">
       <label>Type of user:</label>
-      <select name="idType" class="form-control" required>
+      <select name="idType" class="form-control" required <?php if ($user->getId() == 1) echo 'disabled'?>>
         <option value="" disabled selected>Choose...</option>
         <?php foreach($this->typeUserModel->getAll() as $typeUser): ?>
             <option value="<?php echo $typeUser->getId(); ?>" <?php if ($typeUser->getId() == $user->getIdType()) echo 'selected'; ?> >

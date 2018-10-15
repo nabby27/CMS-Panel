@@ -13,11 +13,19 @@ class PictureController {
     }
     
     public function index() {
+        $pictures = $this->getAll();
         require_once (Settings::PATH['views'].'/picture/picture.php');
     }
     
     public function getAll() {
         return $this->pictureModel->getAll();
+    }
+
+    public function list() {
+        if(isset($_REQUEST['idArticle'])) {
+            $pictures = $this->pictureModel->getByArticleId($_REQUEST['idArticle']);
+        }
+        require_once (Settings::PATH['views'].'/picture/picture.php');
     }
 
     public function edit() {

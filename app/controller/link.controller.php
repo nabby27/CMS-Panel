@@ -13,11 +13,19 @@ class LinkController {
     }
     
     public function index() {
+        $links = $this->getAll();
         require_once (Settings::PATH['views'].'/link/link.php');
     }
 
     public function getAll() {
         return $this->linkModel->getAll();
+    }
+
+    public function list() {        
+        if(isset($_REQUEST['idArticle'])) {
+            $links = $this->linkModel->getByArticleId($_REQUEST['idArticle']);
+        }
+        require_once (Settings::PATH['views'].'/link/link.php');
     }
     
     public function edit() {

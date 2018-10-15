@@ -39,11 +39,10 @@ class Picture {
 
 	public function getByArticleId($id) {
 		try {
-            $sql = "SELECT * FROM CMS_PICTURES WHERE article_id = ?";
+			$sql = "SELECT * FROM CMS_PICTURES WHERE article_id = ?";
 			$stm = $this->pdo->prepare($sql);          
-            $stm->execute(array($id));
-			$stm->setFetchMode(PDO::FETCH_CLASS, 'PictureEntity');
-			return $stm->fetch();
+			$stm->execute(array($id));
+			return $stm->fetchAll(PDO::FETCH_CLASS, 'PictureEntity');
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}

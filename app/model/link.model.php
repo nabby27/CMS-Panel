@@ -42,8 +42,7 @@ class Link {
             $sql = "SELECT * FROM CMS_LINKS WHERE article_id = ?";
 			$stm = $this->pdo->prepare($sql);          
             $stm->execute(array($id));
-			$stm->setFetchMode(PDO::FETCH_CLASS, 'LinkEntity');
-			return $stm->fetch();
+			return $stm->fetchAll(PDO::FETCH_CLASS, 'LinkEntity');
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}

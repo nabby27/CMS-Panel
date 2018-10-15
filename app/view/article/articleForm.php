@@ -2,7 +2,7 @@
     <?php echo $article->getId() != null ? $article->getId() : 'New article'; ?>
 </h1>
 
-<form id="frm-article" action="?c=article&a=save" method="post" enctype="multipart/form-data">
+<form action="?c=article&a=save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $article->getId(); ?>" />
       
     <div class="form-group">
@@ -15,17 +15,19 @@
         <textarea class="form-control" rows="6" name="description" placeholder="Describe new article here..."><?php echo $article->getDescription(); ?></textarea>
     </div>
 
-    <div class="form-group">
+    <img src="<?php echo Settings::PATH['img'].'/'.$article->getPicture(); ?>" class="img-fluid" alt="image">
+    <div class="custom-file">
         <label>Picture:</label>
-        <input type="text" name="picture" value="<?php echo $article->getPicture(); ?>" class="form-control" placeholder="Picture" required>
+        <input type="file" name="picture" class="custom-file-input">
+        <label class="custom-file-label"><?php echo ($article->getId() != null) ? $article->getPicture() : 'Choose file'; ?></label>
     </div>
 
     <div class="form-group">
-      <label for="inputCategory">Category:</label>
-      <select id="inputCategory" name="idCategory" class="form-control" required>
+      <label>Category:</label>
+      <select name="idCategory" class="form-control" required>
         <option value="" disabled selected>Choose...</option>
         <?php foreach($this->categoryModel->getAll() as $category): ?>
-            <option  value="<?php echo $category->getId(); ?>" <?php if ($category->getId() == $article->getId()) echo 'selected'; ?> >
+            <option value="<?php echo $category->getId(); ?>" <?php if ($category->getId() == $article->getIdCategory()) echo 'selected'; ?> >
                 <?php echo $category->getName(); ?> 
             </option>
         <?php endforeach; ?>

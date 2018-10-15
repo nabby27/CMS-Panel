@@ -17,9 +17,6 @@ class CategoryEntity {
 			$this->idCategoryFather = (int) $this->category_father_id;
 			unset($this->category_id);
 			unset($this->category_father_id);
-			/*settype($id, "integer");
-			settype($idCategoryFather, "integer");
-			settype($name, "string");*/
 		}
 		catch(Exception $e) {
 			die($e->getMessage());

@@ -2,16 +2,16 @@
     <?php echo $category->getId() != null ? $category->getId() : 'New category'; ?>
 </h1>
 
-<form id="frm-category" action="?c=category&a=save" method="post" enctype="multipart/form-data">
+<form action="?c=category&a=save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $category->getId(); ?>" />
 
     <div class="form-group">
-      <label for="inputCategoryFather">Category father:</label>
-      <select id="inputCategoryFather" name="idCategoryFather" class="form-control" required>
+      <label>Category father:</label>
+      <select name="idCategoryFather" class="form-control" required>
         <option value="" disabled selected>Choose...</option>
-        <?php foreach($this->getAll() as $category2): ?>
-            <option value="<?php echo $category2->getId(); ?>" <?php if ($category2->getId() == $category->getIdCategoryFather()) echo 'selected'; ?> >
-                <?php echo $category2->getName(); ?> 
+        <?php foreach($this->getAll() as $categoryFather): ?>
+            <option value="<?php echo $categoryFather->getId(); ?>" <?php if ($categoryFather->getId() == $category->getIdCategoryFather()) echo 'selected'; ?> >
+                <?php echo $categoryFather->getName(); ?> 
             </option>
         <?php endforeach; ?>
       </select>

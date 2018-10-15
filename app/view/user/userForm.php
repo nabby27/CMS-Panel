@@ -2,7 +2,7 @@
     <?php echo $user->getId() != null ? $user->getUsername() : 'New user'; ?>
 </h1>
 
-<form id="frm-user" action="?c=user&a=save" method="post" enctype="multipart/form-data">
+<form action="?c=user&a=save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $user->getId(); ?>" />
     
     <div class="form-group">
@@ -41,8 +41,8 @@
     </div>
 
     <div class="form-group">
-      <label for="inputArticle">Type of user:</label>
-      <select id="inputArticle" name="idArticle" class="form-control" required>
+      <label>Type of user:</label>
+      <select name="idArticle" class="form-control" required>
         <option value="" disabled selected>Choose...</option>
         <?php foreach($this->typeUserModel->getAll() as $typeUser): ?>
             <option value="<?php echo $typeUser->getId(); ?>" <?php if ($typeUser->getId() == $user->getIdType()) echo 'selected'; ?> >

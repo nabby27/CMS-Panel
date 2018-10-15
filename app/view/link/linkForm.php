@@ -2,7 +2,7 @@
     <?php echo $link->getId() != 0 ? $link->getId() : 'New link'; ?>
 </h1>
 
-<form id="frm-link" action="?c=link&a=save" method="post" enctype="multipart/form-data">
+<form action="?c=link&a=save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $link->getId(); ?>" />
     
     <div class="form-group">

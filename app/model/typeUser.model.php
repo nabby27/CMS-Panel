@@ -1,5 +1,5 @@
 <?php
-require_once (dirname(__FILE__).'/../entity/typeUser.entity.php');
+require_once (Settings::PATH['entities'].'/typeUser.entity.php');
 
 class TypeUser {
 	private $pdo;
@@ -62,7 +62,7 @@ class TypeUser {
 		}
 	}
 
-	public function insert(category $data) {
+	public function insert($data) {
 		try {
             $sql = "INSERT INTO CMS_TYPE_OF_USERS (type_user) 
                     VALUES (?)";

@@ -26,7 +26,7 @@ class ArticleEntity {
 	}
 
 	public function getId() {
-		return $this->id != null ? $this->id : null;
+		return $this->id;
 	}
 
 	public function setId($id) {
@@ -34,7 +34,7 @@ class ArticleEntity {
 	}
 	
 	public function getName() {
-		return $this->name != null ? $this->name : null;
+		return $this->name;
 	}
 
 	public function setName(String $name) {
@@ -42,7 +42,7 @@ class ArticleEntity {
 	}
 	
 	public function getDescription() {
-		return $this->description != null ? $this->description : null;
+		return $this->description;
 	}
 
 	public function setDescription(String $description) {
@@ -50,7 +50,7 @@ class ArticleEntity {
 	}
 
 	public function getPicture() {
-		return $this->picture != null ? $this->picture : null;
+		return $this->picture;
 	}
 
 	public function setPicture(String $picture) {
@@ -58,10 +58,10 @@ class ArticleEntity {
 	}
 
 	public function getIdCategory() {
-		return $this->idCategory != null ? $this->idCategory : null;
+		return $this->idCategory;
 	}
 
-	public function setIdCateogory(int $idCategory) {
+	public function setIdCateogory($idCategory) {
 		$this->idCategory = $idCategory;
 	}
 

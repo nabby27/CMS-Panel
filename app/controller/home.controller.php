@@ -7,7 +7,7 @@ class HomeController {
     }
     
     public function index() {
-        require_once (dirname(__FILE__).'/../view/home/home.php');
+        require_once (Settings::PATH['views'].'/home/home.php');
     }
 
 }

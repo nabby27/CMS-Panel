@@ -1,5 +1,5 @@
 <?php
-require_once (dirname(__FILE__).'/../entity/picture.entity.php');
+require_once (Settings::PATH['entities'].'/picture.entity.php');
 
 class Picture {
 	private $pdo;
@@ -78,7 +78,7 @@ class Picture {
 		}
 	}
 
-	public function insert(category $data) {
+	public function insert($data) {
 		try {
             $sql = "INSERT INTO CMS_PICTURES (picture, description, article_id) 
                     VALUES (?, ?, ?)";

@@ -1,5 +1,5 @@
 <?php
-require_once (dirname(__FILE__).'/../entity/category.entity.php');
+require_once (Settings::PATH['entities'].'/category.entity.php');
 
 class Category {
 	private $pdo;

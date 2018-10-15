@@ -1,5 +1,5 @@
 <?php
-require_once (dirname(__FILE__).'/../entity/link.entity.php');
+require_once (Settings::PATH['entities'].'/link.entity.php');
 
 class Link {
 	private $pdo;
@@ -78,7 +78,7 @@ class Link {
 		}
 	}
 
-	public function insert(category $data) {
+	public function insert($data) {
 		try {
             $sql = "INSERT INTO CMS_LINKS (name, link, article_id) 
                     VALUES (?, ?, ?)";

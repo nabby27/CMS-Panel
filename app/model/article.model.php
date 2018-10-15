@@ -1,5 +1,5 @@
 <?php
-require_once (dirname(__FILE__).'/../entity/article.entity.php');
+require_once (Settings::PATH['entities'].'/article.entity.php');
 
 class Article {
 	private $pdo;
@@ -49,19 +49,17 @@ class Article {
 		}
 	}
 
-	public function delete($id) : boolean {
+	public function delete($id) {
 		try {
             $sql = "DELETE FROM CMS_ARTICLES WHERE article_id = ?";
 			$stm = $this->pdo->prepare($sql);			          
 			$stm->execute(array($id));
-			return true;
 		} catch (Exception $e) {
 			die($e->getMessage());
-			return false;
 		}
 	}
 
-	public function update($data) : boolean {
+	public function update($data) {
 		try {
 			$sql = "UPDATE CMS_ARTICLES SET 
 						name                = ?, 
@@ -77,16 +75,13 @@ class Article {
 					$data->getIdCategory(),
 					$data->getId()
 				));
-			return true;
 		} catch (Exception $e) {
 			die($e->getMessage());
-			return false;
 		}
 	}
 
-	public function insert(category $data) : boolean {
+	public function insert($data) {
 		try {
-			var_dump($data);
             $sql = "INSERT INTO CMS_ARTICLES (name, description, picture, category_id) 
                     VALUES (?, ?, ?, ?)";
             $stm = $this->pdo->prepare($sql);
@@ -96,10 +91,8 @@ class Article {
                     $data->getPicture(), 
 					$data->getIdCategory()
 				));
-			return true;
 		} catch (Exception $e) {
 			die($e->getMessage());
-			return false;
 		}
 	}
 	  

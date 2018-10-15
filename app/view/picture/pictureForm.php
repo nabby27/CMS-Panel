@@ -2,13 +2,14 @@
     <?php echo $picture->getId() != null ? $picture->getId() : 'New picture'; ?>
 </h1>
 
-<form id="frm-picture" action="?c=picture&a=save" method="post" enctype="multipart/form-data">
+<form action="?c=picture&a=save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $picture->getId(); ?>" />
-    
+
+    <img src="<?php echo Settings::PATH['img'].'/'.$picture->getPicture(); ?>" class="img-fluid mb-1" alt="image">
     <div class="custom-file">
         <label>Picture:</label>
-        <input type="file" id="searhPicture" name="picture" class="custom-file-input">
-        <label class="custom-file-label" for="searhPicture"><?php echo ($picture->getId() != null) ? $picture->getPicture() : 'Choose file'; ?></label>
+        <input type="file" name="picture" class="custom-file-input">
+        <label class="custom-file-label"><?php echo ($picture->getId() != null) ? $picture->getPicture() : 'Choose file'; ?></label>
     </div>
 
     <div class="form-group">
@@ -17,11 +18,11 @@
     </div>
 
     <div class="form-group">
-      <label for="inputArticle">Article:</label>
-      <select id="inputArticle" name="idArticle" class="form-control" required>
+      <label>Article:</label>
+      <select name="idArticle" class="form-control" required>
         <option value="" disabled selected>Choose...</option>
         <?php foreach($this->articleModel->getAll() as $article): ?>
-            <option value="<?php echo $article->getId(); ?>" <?php if ($article->getId() == $picture->getId()) echo 'selected'; ?> >
+            <option value="<?php echo $article->getId(); ?>" <?php if ($article->getId() == $picture->getIdArticle()) echo 'selected'; ?> >
                 <?php echo $article->getName(); ?> 
             </option>
         <?php endforeach; ?>

@@ -1,6 +1,6 @@
 <?php
-require_once (dirname(__FILE__).'/../model/user.model.php');
-require_once (dirname(__FILE__).'/../model/typeUser.model.php');
+require_once (Settings::PATH['models'].'/user.model.php');
+require_once (Settings::PATH['models'].'/typeUser.model.php');
 
 class UserController {
     
@@ -12,7 +12,7 @@ class UserController {
     }
     
     public function index() {
-        require_once (dirname(__FILE__).'/../view/user/user.php');
+        require_once (Settings::PATH['views'].'/user/user.php');
     }
 
     public function getAll() {
@@ -21,20 +21,22 @@ class UserController {
     
     public function edit() {
         $user = new UserEntity();
+        
         if(isset($_REQUEST['id'])) {
             $user = $this->userModel->getOne($_REQUEST['id']);
         }
-        require_once (dirname(__FILE__).'/../view/user/userForm.php');
+        require_once (Settings::PATH['views'].'/user/userForm.php');
     }
 
     public function create() {
         $user = new UserEntity();
 
-        require_once (dirname(__FILE__).'/../view/user/userForm.php');
+        require_once (Settings::PATH['views'].'/user/userForm.php');
     }
     
     public function save() {
         $user = new UserEntity();
+
         $user->setId($_REQUEST['id']);
         $user->setName($_REQUEST['name']);
         $user->setSurname($_REQUEST['surname']);      
@@ -46,12 +48,12 @@ class UserController {
 
         $user->getId() > 0 ? $this->userModel->update($user) : $this->userModel->insert($user);
         
-        header('Location: index.php');
+        header('Location: index.php?c=user');
     }
     
     public function delete() {
         $this->userModel->delete($_REQUEST['id']);
-        header('Location: index.php');
+        header('Location: index.php?c=user');
     }
 
 }

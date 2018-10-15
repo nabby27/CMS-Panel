@@ -1,6 +1,6 @@
 <?php
-require_once (dirname(__FILE__).'/../model/link.model.php');
-require_once (dirname(__FILE__).'/../model/article.model.php');
+require_once (Settings::PATH['models'].'/link.model.php');
+require_once (Settings::PATH['models'].'/article.model.php');
 
 class LinkController {
     
@@ -13,7 +13,7 @@ class LinkController {
     }
     
     public function index() {
-        require_once (dirname(__FILE__).'/../view/link/link.php');
+        require_once (Settings::PATH['views'].'/link/link.php');
     }
 
     public function getAll() {
@@ -22,20 +22,22 @@ class LinkController {
     
     public function edit() {
         $link = new LinkEntity();
+        
         if(isset($_REQUEST['id'])) {
             $link = $this->linkModel->getOne($_REQUEST['id']);
         }
-        require_once (dirname(__FILE__).'/../view/link/linkForm.php');
+        require_once (Settings::PATH['views'].'/link/linkForm.php');
     }
 
     public function create() {
         $link = new LinkEntity();
 
-        require_once (dirname(__FILE__).'/../view/link/linkForm.php');
+        require_once (Settings::PATH['views'].'/link/linkForm.php');
     }
     
     public function save() {
         $link = new LinkEntity();
+
         $link->setId($_REQUEST['id']);
         $link->setName($_REQUEST['name']);      
         $link->setLink($_REQUEST['link']);
@@ -43,12 +45,12 @@ class LinkController {
 
         $link->getId() > 0 ? $this->linkModel->update($link) : $this->linkModel->insert($link);
         
-        header('Location: index.php');
+        header('Location: index.php?c=link');
     }
     
     public function delete() {
         $this->linkModel->delete($_REQUEST['id']);
-        header('Location: index.php');
+        header('Location: index.php?c=link');
     }
 
 }

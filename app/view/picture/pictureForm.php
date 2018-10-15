@@ -5,16 +5,20 @@
 <form action="?c=picture&a=save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $picture->getId(); ?>" />
 
-    <img src="<?php echo Settings::PATH['img'].'/'.$picture->getPicture(); ?>" class="img-fluid mb-1" alt="image">
-    <div class="custom-file">
+    <div class="form-group">
         <label>Picture:</label>
-        <input type="file" name="picture" class="custom-file-input">
-        <label class="custom-file-label"><?php echo ($picture->getId() != null) ? $picture->getPicture() : 'Choose file'; ?></label>
+        <?php if ($picture->getId() != null) { ?>
+            <img src="<?php echo Settings::PATH['img'].'/'.$picture->getPicture(); ?>" class="img-fluid mb-1" alt="image">
+        <?php } ?>
+        <div class="custom-file">
+            <input type="file" name="picture" class="custom-file-input" required>
+            <label class="custom-file-label"><?php echo ($picture->getId() != null) ? $picture->getPicture() : 'Choose file'; ?></label>
+        </div>
     </div>
 
     <div class="form-group">
         <label>Descriptión:</label>
-        <textarea class="form-control" rows="6" name="description" placeholder="Describe yourself here..."><?php echo $picture->getDescription(); ?></textarea>
+        <textarea class="form-control" rows="6" name="description" placeholder="Describe the picture here..."><?php echo $picture->getDescription(); ?></textarea>
     </div>
 
     <div class="form-group">

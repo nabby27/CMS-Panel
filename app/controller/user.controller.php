@@ -38,6 +38,7 @@ class UserController {
         $user = new UserEntity();
 
         $user->setId($_REQUEST['id']);
+        $user->setUsername($_REQUEST['username']);
         $user->setName($_REQUEST['name']);
         $user->setSurname($_REQUEST['surname']);      
         $user->setEmail($_REQUEST['email']);

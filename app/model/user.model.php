@@ -50,6 +50,7 @@ class User {
 	public function update($data) {
 		try {
 			$sql = "UPDATE CMS_USERS SET 
+						username		= ?,
 						name            = ?, 
 						surname         = ?,
 						email			= ?,					
@@ -60,7 +61,8 @@ class User {
 				    WHERE user_id 		= ?";
             $stm = $this->pdo->prepare($sql);
 			$stm->execute(array(
-					$data->getName(),                        
+					$data->getUsername(),                        
+					$data->getName(),
                     $data->getSurname(),
                     $data->getEmail(), 
 					$data->getTelephon(),

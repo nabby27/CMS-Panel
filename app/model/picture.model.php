@@ -49,6 +49,17 @@ class Picture {
 		}
 	}
 
+	public function getPictureFromId($id) {
+		try {
+            $sql = "SELECT picture FROM CMS_PICTURES WHERE picture_id = ?";
+			$stm = $this->pdo->prepare($sql);          
+            $stm->execute(array($id));
+			return $stm->fetch();
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
+
 	public function delete($id) {
 		try {
             $sql = "DELETE FROM CMS_PICTURES WHERE picture_id = ?";

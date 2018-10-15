@@ -1,7 +1,6 @@
 <?php
 
 class Settings {
-    private static $instance;
 
     const DB = [ 
         'user' => 'root', 
@@ -18,15 +17,7 @@ class Settings {
         'views' => '/home/ivan/Public/MVC-php/app/view',
         'entities' => '/home/ivan/Public/MVC-php/app/entity',
         'core' => '/home/ivan/Public/MVC-php/app/core'
-
     ];
-
-    public static function singleton()  {
-        if (!isset(self::$instance)) {
-            self::$instance = new self;
-        }
-        return self::$instance;
-    }
 
 }
 

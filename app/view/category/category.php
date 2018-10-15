@@ -7,19 +7,20 @@
         <th class="text-center"><i class="fas fa-trash-alt"></i></th>
     </thead>
     <?php foreach($this->getAll() as $category): ?>
-        <tr>
+        <tr class="<?php if ($category->getId() < 2) echo 'bg-light'?>">
             <td class="text-center"><?php echo $category->getId(); ?></td>
             <?php foreach($this->getAll() as $categoryFather): ?>
                 <?php if ($categoryFather->getId() == $category->getIdCategoryFather()) echo "<td class='text-center'>".$categoryFather->getName()."</td>"; ?>
             <?php endforeach; ?>
             <td class="text-center"><?php echo $category->getName(); ?></td>
-
+           
             <td class="text-center">
                 <a class="btn btn-warning" href="?c=category&a=edit&id=<?php echo $category->getId(); ?>">Edit</a>
             </td>
             <td class="text-center">
-                <a class="btn btn-danger" onclick="javascript:return confirm('Do you want delete this category?');" href="?c=category&a=delete&id=<?php echo $category->getId(); ?>">Delete</a>
+                <a class="btn btn-danger <?php if ($category->getId() < 2) echo 'disabled'?>" onclick="javascript:return confirm('Do you want delete this category?');" href="?c=category&a=delete&id=<?php echo $category->getId(); ?>">Delete</a>
             </td>
+
         </tr>
     <?php endforeach; ?>
 </table>

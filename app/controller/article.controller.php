@@ -37,15 +37,12 @@ class ArticleController {
     public function save() {
         $article = new ArticleEntity();
 
-        var_dump($_REQUEST['idCategory']);
-
-        $article->setId($_REQUEST['id']);
+        $article->setId( (int) $_REQUEST['id']);
         $article->setName($_REQUEST['name']);
-        $article->setDescription($_REQUEST['description']);      
-        $article->setPicture($_REQUEST['picture']);
-        $article->setIdCategory((int) $_REQUEST['idCategory']);
+        $article->setDescription($_REQUEST['description']);
+        $article->setPicture($_REQUEST['picture'] != null ? $_REQUEST['picture'] : $this->articleModel->getPictureFromId($article->getId())['picture']);
+        $article->setIdCategory($_REQUEST['idCategory']);
 
-        var_dump($_REQUEST['idCategory']);
 
         $article->getId() > 0 ? $this->articleModel->update($article) : $this->articleModel->insert($article);
         

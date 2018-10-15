@@ -37,9 +37,9 @@ class PictureController {
     
     public function save() {
         $picture = new PictureEntity();
-
+        
         $picture->setId($_REQUEST['id']);
-        $picture->setPicture($_REQUEST['picture']);
+        $picture->setPicture($_REQUEST['picture'] != null ? $_REQUEST['picture'] : $this->pictureModel->getPictureFromId($picture->getId())['picture']);
         $picture->setDescription($_REQUEST['description']);      
         $picture->setIdArticle($_REQUEST['idArticle']);
 

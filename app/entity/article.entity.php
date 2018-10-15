@@ -37,7 +37,7 @@ class ArticleEntity {
 		return $this->name;
 	}
 
-	public function setName(String $name) {
+	public function setName(string $name) {
 		$this->name = $name;
 	}
 	
@@ -45,7 +45,7 @@ class ArticleEntity {
 		return $this->description;
 	}
 
-	public function setDescription(String $description) {
+	public function setDescription(string $description) {
 		$this->description = $description;
 	}
 
@@ -53,7 +53,7 @@ class ArticleEntity {
 		return $this->picture;
 	}
 
-	public function setPicture(String $picture) {
+	public function setPicture(string $picture) {
 		$this->picture = $picture;
 	}
 
@@ -61,7 +61,7 @@ class ArticleEntity {
 		return $this->idCategory;
 	}
 
-	public function setIdCateogory($idCategory) {
+	public function setIdCategory(int $idCategory) {
 		$this->idCategory = $idCategory;
 	}
 

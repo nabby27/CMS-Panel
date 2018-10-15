@@ -42,11 +42,11 @@
 
     <div class="form-group">
       <label>Type of user:</label>
-      <select name="idArticle" class="form-control" required>
+      <select name="idType" class="form-control" required>
         <option value="" disabled selected>Choose...</option>
         <?php foreach($this->typeUserModel->getAll() as $typeUser): ?>
             <option value="<?php echo $typeUser->getId(); ?>" <?php if ($typeUser->getId() == $user->getIdType()) echo 'selected'; ?> >
-                <?php echo $typeUser->getTypeUser(); ?> 
+                <?php echo $typeUser->getTypeUser();?> 
             </option>
         <?php endforeach; ?>
       </select>

@@ -58,6 +58,17 @@ class Link {
 		}
 	}
 
+	public function deleteFromArticleId($id) {
+		try {
+            $sql = "DELETE FROM CMS_LINKS WHERE link_id IN 
+						(SELECT link_id WHERE article_id = ?)";
+			$stm = $this->pdo->prepare($sql);			          
+            $stm->execute(array($id));
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
+
 	public function update($data) {
 		try {
 			$sql = "UPDATE CMS_LINKS SET 

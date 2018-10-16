@@ -9,14 +9,17 @@ class Settings {
         'host' => 'localhost'
     ];
 
+    const ROOT_PATH = '/home/ivan/Public'; 
+
     const PATH = [
-        'root' => '/home/ivan/Public',
+        'root' => self::ROOT_PATH,
         'img' => '/MVC-php/assets/images',
-        'models' => '/home/ivan/Public/MVC-php/app/model',
-        'controllers' => '/home/ivan/Public/MVC-php/app/controller',
-        'views' => '/home/ivan/Public/MVC-php/app/view',
-        'entities' => '/home/ivan/Public/MVC-php/app/entity',
-        'core' => '/home/ivan/Public/MVC-php/app/core'
+        'models' => self::ROOT_PATH.'/MVC-php/app/model',
+        'controllers' => self::ROOT_PATH.'/MVC-php/app/controller',
+        'views' => self::ROOT_PATH.'/MVC-php/app/view',
+        'entities' => self::ROOT_PATH.'/MVC-php/app/entity',
+        'core' => self::ROOT_PATH.'/MVC-php/app/core',
+        'utils' => self::ROOT_PATH.'/MVC-php/app/utils'
     ];
 
 }

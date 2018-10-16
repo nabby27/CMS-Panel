@@ -1,5 +1,6 @@
 <?php
 require_once (Settings::PATH['entities'].'/article.entity.php');
+require_once (Settings::PATH['utils'].'/picture.utils.php');
 
 class Article {
 	private $pdo;
@@ -7,6 +8,9 @@ class Article {
 	public function __CONSTRUCT() {
 		try {
 			$this->pdo = Database::StartUp();  		
+			
+			$link = new Link();
+			$picture = new Picture();
 		}
 		catch(Exception $e) {
 			die($e->getMessage());
@@ -61,7 +65,38 @@ class Article {
 
 	public function delete($id) {
 		try {
+			$article = $this->getOne($id);
+			if ($article->getPicture() != null) 
+				PictureUtils::removePicture($article->getPicture());
+			
+			$link->deleteFromArticleId($id);
+			$picture->deleteFromArticleId($id);
+
             $sql = "DELETE FROM CMS_ARTICLES WHERE article_id = ?";
+			$stm = $this->pdo->prepare($sql);			          
+			$stm->execute(array($id));
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
+
+	public function deleteFromCategoryId($id) {
+		try {
+			$articles = $this->getByCategoryId($id);
+			
+			foreach ($articles as $article) {
+				$link = new Link();
+				$picture = new Picture();
+
+				$article = $this->getOne($id);
+				if ($article->getPicture() != null) 
+					PictureUtils::removePicture($article->getPicture());
+				$link->deleteFromArticleId($id);
+				$picture->deleteFromArticleId($id);
+			}
+
+            $sql = "DELETE FROM CMS_ARTICLES WHERE article_id IN
+						(SELECT article_id WHERE category_id = ?)";
 			$stm = $this->pdo->prepare($sql);			          
 			$stm->execute(array($id));
 		} catch (Exception $e) {
@@ -71,6 +106,11 @@ class Article {
 
 	public function update($data) {
 		try {
+			$article = $this->getOne($data->getId());
+			if ($article->getPicture() != null)
+				PictureUtils::removePicture($article->getPicture());
+			PictureUtils::uploadPicture($data->getPicture());
+
 			$sql = "UPDATE CMS_ARTICLES SET 
 						name                = ?, 
 						description         = ?,
@@ -92,6 +132,8 @@ class Article {
 
 	public function insert($data) {
 		try {
+			PictureUtils::uploadPicture($data->getPicture());
+
             $sql = "INSERT INTO CMS_ARTICLES (name, description, picture, category_id) 
                     VALUES (?, ?, ?, ?)";
             $stm = $this->pdo->prepare($sql);

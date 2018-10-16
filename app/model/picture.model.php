@@ -1,5 +1,6 @@
 <?php
 require_once (Settings::PATH['entities'].'/picture.entity.php');
+require_once (Settings::PATH['utils'].'/picture.utils.php');
 
 class Picture {
 	private $pdo;
@@ -61,7 +62,22 @@ class Picture {
 
 	public function delete($id) {
 		try {
-            $sql = "DELETE FROM CMS_PICTURES WHERE picture_id = ?";
+			$picture = $this->getOne($id);
+			if ($picture->getPicture() != null)
+				PictureUtils::removePicture($picture->getPicture());
+			
+			$sql = "DELETE FROM CMS_PICTURES WHERE picture_id = ?";
+			$stm = $this->pdo->prepare($sql);			          
+			$stm->execute(array($id));
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
+
+	public function deleteFromArticleId($id) {
+		try {
+            $sql = "DELETE FROM CMS_PICTURES WHERE picture_id IN 
+						(SELECT picture_id WHERE article_id = ?)";
 			$stm = $this->pdo->prepare($sql);			          
             $stm->execute(array($id));
 		} catch (Exception $e) {
@@ -71,6 +87,11 @@ class Picture {
 
 	public function update($data) {
 		try {
+			$picture = $this->getOne($data->getId());
+			if ($picture->getPicture() != null)
+				PictureUtils::removePicture($picture->getPicture());
+			PictureUtils::uploadPicture($data->getPicture());
+
 			$sql = "UPDATE CMS_PICTURES SET 
 						picture				= ?,					
 						description         = ?,
@@ -90,6 +111,8 @@ class Picture {
 
 	public function insert($data) {
 		try {
+			PictureUtils::uploadPicture($data->getPicture());
+
             $sql = "INSERT INTO CMS_PICTURES (picture, description, article_id) 
                     VALUES (?, ?, ?)";
             $stm = $this->pdo->prepare($sql);

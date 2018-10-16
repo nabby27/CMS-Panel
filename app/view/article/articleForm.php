@@ -21,7 +21,7 @@
             <img src="<?php echo Settings::PATH['img'].'/'.$article->getPicture(); ?>" class="img-fluid" alt="image">
         <?php } ?>
         <div class="custom-file">
-            <input type="file" name="picture" class="custom-file-input">
+            <input type="file" name="picture" class="custom-file-input" <?php if ($article->getId() != null) 'required' ?> >
             <label class="custom-file-label"><?php echo ($article->getId() != null) ? $article->getPicture() : 'Choose file'; ?></label>
         </div>
     </div>

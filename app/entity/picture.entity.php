@@ -34,7 +34,7 @@ class PictureEntity {
 		return $this->picture;
 	}
 
-	public function setPicture(string $picture) {
+	public function setPicture($picture) {
 		$this->picture = $picture;
 	}
 

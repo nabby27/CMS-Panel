@@ -37,7 +37,13 @@
 
     <div class="form-group">
         <label>Password:</label>
-        <input type="number" name="password" value="<?php echo $user->getPassword(); ?>" class="form-control" placeholder="Password" required
+        <input type="password" name="password" value="<?php echo $user->getPassword(); ?>" class="form-control" placeholder="Password" required
+            <?php if ($user->getId() == 1) echo 'disabled'?> >
+    </div>
+
+    <div class="form-group">
+        <label>Password:</label>
+        <input type="password" name="password2" value="<?php echo $user->getPassword(); ?>" class="form-control" placeholder="Repeat the password" required
             <?php if ($user->getId() == 1) echo 'disabled'?> >
     </div>
 

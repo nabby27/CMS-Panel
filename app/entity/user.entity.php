@@ -10,6 +10,7 @@ class UserEntity {
 	private $telephon;
 	private $address;
 	private $password;
+	private $password2;
 	private $idType;
 
 	//db properties to convert
@@ -91,6 +92,14 @@ class UserEntity {
 
 	public function setPassword(string $password) {
 		$this->password = $password;
+	}
+
+	public function getPassword2() {
+		return $this->password2;
+	}
+
+	public function setPassword2(string $password2) {
+		$this->password2 = $password2;
 	}
 
 	public function getIdType() {

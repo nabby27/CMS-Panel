@@ -1,7 +1,6 @@
 use CMS;
 
 INSERT INTO CMS_CATEGORIES (category_father_id, category_id, name) VALUES
-(1, 1, 'ninguna'),
 (1, 2, 'peliculas'),
 (1, 3, 'series'),
 (2, 4, 'super-heroes'),

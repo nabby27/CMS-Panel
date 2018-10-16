@@ -23,7 +23,8 @@ class Settings {
     ];
 
     const ERRORS = [
-        'FILE_NOT_UPLOAD' => 0
+        'FILE_NOT_UPLOAD' => 0,
+        'PASSWORD_NOT_MATCH' => 1
     ];
 
 }

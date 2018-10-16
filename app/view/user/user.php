@@ -8,26 +8,32 @@
         <th class="text-center"><i class="far fa-edit"></i></th>
         <th class="text-center"><i class="fas fa-trash-alt"></i></th>
     </thead>
-    <?php foreach($this->getAll() as $user): ?>
+    <?php if ($users != null) { ?>
+        <?php foreach($users as $user): ?>
+            <tr class="<?php if ($user->getIdType() < 2) echo 'bg-light'?>">
+                <td class="text-center"><?php echo $user->getId(); ?></td>
+                <td class="text-center"><?php echo $user->getUsername(); ?></td>
+                <td class="text-center"><?php echo $user->getName(); ?></td>
+                <td class="text-center"><?php echo $user->getSurname(); ?></td>
+                <td class="text-center"><?php echo $user->getEmail(); ?></td>
+                <td class="text-center"><?php echo $user->getTelephon(); ?></td>
+                <td class="text-center"><?php echo $user->getAddress(); ?></td>
+                <td class="text-center"><?php echo $user->getPassword(); ?></td>
+                <?php foreach($typeUsers as $typeUser): ?>
+                    <?php if ($typeUser->getId() == $user->getIdType()) echo "<td>".$typeUser->getTypeUser()."</td>"; ?>
+                <?php endforeach; ?>
+                
+                <td class="text-center">
+                    <a class="btn btn-warning" href="?c=user&a=edit&id=<?php echo $user->getId(); ?>">Edit</a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-danger <?php if ($user->getId() == 1) echo 'disabled'?>" onclick="javascript:return confirm('Do you want delete this user?');" href="?c=user&a=delete&id=<?php echo $user->getId(); ?>">Delete</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php } else { ?>
         <tr>
-            <td class="text-center"><?php echo $user->getId(); ?></td>
-            <td class="text-center"><?php echo $user->getUsername(); ?></td>
-            <td class="text-center"><?php echo $user->getName(); ?></td>
-            <td class="text-center"><?php echo $user->getSurname(); ?></td>
-            <td class="text-center"><?php echo $user->getEmail(); ?></td>
-            <td class="text-center"><?php echo $user->getTelephon(); ?></td>
-            <td class="text-center"><?php echo $user->getAddress(); ?></td>
-            <td class="text-center"><?php echo $user->getPassword(); ?></td>
-            <?php foreach($this->typeUserModel->getAll() as $typeUser): ?>
-                <?php if ($typeUser->getId() == $user->getIdType()) echo "<td>".$typeUser->getTypeUser()."</td>"; ?>
-            <?php endforeach; ?>
-            
-            <td class="text-center">
-                <a class="btn btn-warning" href="?c=user&a=edit&id=<?php echo $user->getId(); ?>">Edit</a>
-            </td>
-            <td class="text-center">
-                <a class="btn btn-danger <?php if ($user->getId() == 1) echo 'disabled'?>" onclick="javascript:return confirm('Do you want delete this user?');" href="?c=user&a=delete&id=<?php echo $user->getId(); ?>">Delete</a>
-            </td>
+            <td colspan="11" class="text-center text-info bg-light"> THERE ARE NO RECORDS </td>
         </tr>
-    <?php endforeach; ?>
+    <?php } ?>
 </table>

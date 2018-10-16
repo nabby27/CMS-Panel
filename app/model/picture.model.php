@@ -87,12 +87,16 @@ class Picture {
 
 	public function update($data) {
 		try {
+			echo "Hola";
 			$picture = $this->getOne($data->getId());
-			if ($picture->getPicture() != null)
-				PictureUtils::removePicture($picture->getPicture());
-			$pictureName = PictureUtils::uploadPicture($data-getPicture());
-			if ($pictureName == Settings::ERRORS['FILE_NOT_UPLOAD'])
+			if ($data->getPicture()['size'] > 0) {
+				if ($picture->getPicture() != null)
+					PictureUtils::removePicture($picture->getPicture());
+				$pictureName = PictureUtils::uploadPicture($data->getPicture()); 
+				if ($pictureName == Settings::ERRORS['FILE_NOT_UPLOAD'])
 					return Settings::ERRORS['FILE_NOT_UPLOAD'];
+			} else
+				$pictureName = $picture->getPicture();
 
 			$sql = "UPDATE CMS_PICTURES SET 
 						picture				= ?,					
@@ -113,7 +117,7 @@ class Picture {
 
 	public function insert($data) {
 		try {
-			$picture = PictureUtils::uploadPicture($data-getPicture());
+			$picture = PictureUtils::uploadPicture($data->getPicture());
 			if ($picture == Settings::ERRORS['FILE_NOT_UPLOAD'])
 				return Settings::ERRORS['FILE_NOT_UPLOAD'];
 

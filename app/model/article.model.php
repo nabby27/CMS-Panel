@@ -89,8 +89,6 @@ class Article {
 			foreach ($articles as $article) {
 				$link = new Link();
 				$picture = new Picture();
-
-				$article = $this->getOne($id);
 				if ($article->getPicture() != null) 
 					PictureUtils::removePicture($article->getPicture());
 				$link->deleteFromArticleId($id);
@@ -109,12 +107,16 @@ class Article {
 	public function update($data) {
 		try {
 			$article = $this->getOne($data->getId());
-			if ($article->getPicture() != null)
-				PictureUtils::removePicture($article->getPicture());
-			$picture = PictureUtils::uploadPicture($data-getPicture());
-			if ($picture == Settings::ERRORS['FILE_NOT_UPLOAD'])
-				return Settings::ERRORS['FILE_NOT_UPLOAD'];
-				
+			
+			if ($data->getPicture()['size'] > 0) {
+				if ($article->getPicture() != null)
+					PictureUtils::removePicture($article->getPicture());
+				$picture = PictureUtils::uploadPicture($data->getPicture()); 
+				if ($picture == Settings::ERRORS['FILE_NOT_UPLOAD'])
+					return Settings::ERRORS['FILE_NOT_UPLOAD'];
+			} else
+				$picture = $article->getPicture();
+
 			$sql = "UPDATE CMS_ARTICLES SET 
 						name                = ?, 
 						description         = ?,
@@ -136,7 +138,7 @@ class Article {
 
 	public function insert($data) {
 		try {
-			$picture = PictureUtils::uploadPicture($data-getPicture());
+			$picture = PictureUtils::uploadPicture($data->getPicture()); 
 			if ($picture == Settings::ERRORS['FILE_NOT_UPLOAD'])
 				return Settings::ERRORS['FILE_NOT_UPLOAD'];
 

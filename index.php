@@ -1,7 +1,6 @@
 <?php
 declare(strict_types = 1);
-require_once ('/home/ivan/Public/MVC-php/app/core/settings.php');
-
+require_once ('app/core/settings.php');
 require_once (Settings::PATH['core'].'/db.conf.php');
 
 $controller = 'home';

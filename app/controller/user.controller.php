@@ -12,6 +12,8 @@ class UserController {
     }
     
     public function index() {
+        $users = $this->getAll();
+        $typeUsers = $this->typeUserModel->getAll();
         require_once (Settings::PATH['views'].'/user/user.php');
     }
 
@@ -45,6 +47,7 @@ class UserController {
         $user->setTelephon($_REQUEST['telephon']);
         $user->setAddress($_REQUEST['address']);
         $user->setPassword($_REQUEST['password']);
+        $user->setPassword2($_REQUEST['password2']);
         $user->setIdType($_REQUEST['idType']);
 
         $user->getId() > 0 ? $this->userModel->update($user) : $this->userModel->insert($user);

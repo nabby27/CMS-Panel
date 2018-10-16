@@ -3,14 +3,13 @@
 class PictureUtils {	
     
     public function uploadPicture($picture) {
-        echo "Hola";
         if (
             ($picture['type'] == 'image/gif' ||
             $picture['type'] == 'image/jpeg' ||
             $picture['type'] == 'image/jpg' ||
             $picture['type'] == 'image/JPG' ||
             $picture['type'] == 'image/pjpeg') &&
-            $picture["size"] < 1000000
+            $picture['size'] < 1000000
         ) {
             if (is_uploaded_file ($picture['tmp_name'])){
                 $nameDirectory = Settings::ROOT_PATH.Settings::PATH['img'];
@@ -20,7 +19,7 @@ class PictureUtils {
                 $pictureName = $nameFile;
                 return $pictureName;
             } else {
-                return Settings::ERRORS['FILE_NOT_UPLOAD'];    
+                return Settings::ERRORS['FILE_NOT_UPLOAD'];
             }
         } else {
             return Settings::ERRORS['FILE_NOT_UPLOAD'];
@@ -28,7 +27,7 @@ class PictureUtils {
     }
     
     public function removePicture($pictureName) {
-		unlink(Settings::PATH['img'].'/'.$pictureName);
+		unlink(Settings::ROOT_PATH.Settings::PATH['img'].'/'.$pictureName);
 	}
 
 }

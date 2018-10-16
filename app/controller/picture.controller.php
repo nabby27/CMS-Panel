@@ -47,10 +47,9 @@ class PictureController {
         $picture = new PictureEntity();
         
         $picture->setId($_REQUEST['id']);
-        $picture->setPicture($_REQUEST['picture'] != null ? $_REQUEST['picture'] : $this->pictureModel->getPictureFromId($picture->getId())['picture']);
+        $picture->setPicture($_FILES['picture']);
         $picture->setDescription($_REQUEST['description']);      
         $picture->setIdArticle($_REQUEST['idArticle']);
-
         $picture->getId() > 0 ? $this->pictureModel->update($picture) : $this->pictureModel->insert($picture);
         
         header('Location: index.php?c=picture');

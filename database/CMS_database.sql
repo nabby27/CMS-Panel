@@ -12,6 +12,7 @@ CREATE TABLE CMS_CATEGORIES (
   name varchar(50) DEFAULT NULL,
   PRIMARY KEY (category_id)
 );
+INSERT INTO CMS_CATEGORIES (category_father_id, category_id, name) VALUES (1, 1, 'ninguna');
 
 CREATE TABLE CMS_ARTICLES (
   article_id int(30) NOT NULL AUTO_INCREMENT,

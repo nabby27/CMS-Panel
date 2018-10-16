@@ -90,7 +90,9 @@ class Picture {
 			$picture = $this->getOne($data->getId());
 			if ($picture->getPicture() != null)
 				PictureUtils::removePicture($picture->getPicture());
-			PictureUtils::uploadPicture($data->getPicture());
+			$pictureName = PictureUtils::uploadPicture($data-getPicture());
+			if ($pictureName == Settings::ERRORS['FILE_NOT_UPLOAD'])
+					return Settings::ERRORS['FILE_NOT_UPLOAD'];
 
 			$sql = "UPDATE CMS_PICTURES SET 
 						picture				= ?,					
@@ -99,7 +101,7 @@ class Picture {
 				    WHERE picture_id 		= ?";
             $stm = $this->pdo->prepare($sql);
 			$stm->execute(array(
-					$data->getPicture(), 
+					$pictureName,
                     $data->getDescription(),
 					$data->getIdArticle(),
 					$data->getId()
@@ -111,13 +113,15 @@ class Picture {
 
 	public function insert($data) {
 		try {
-			PictureUtils::uploadPicture($data->getPicture());
+			$picture = PictureUtils::uploadPicture($data-getPicture());
+			if ($picture == Settings::ERRORS['FILE_NOT_UPLOAD'])
+				return Settings::ERRORS['FILE_NOT_UPLOAD'];
 
             $sql = "INSERT INTO CMS_PICTURES (picture, description, article_id) 
                     VALUES (?, ?, ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->execute(array(
-					$data->getPicture(), 
+					$picture, 
 					$data->getDescription(),
 					$data->getIdArticle()
                 ));

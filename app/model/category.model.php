@@ -1,5 +1,6 @@
 <?php
 require_once (Settings::PATH['entities'].'/category.entity.php');
+require_once (Settings::PATH['models'].'/article.model.php');
 
 class Category {
 	private $pdo;
@@ -51,9 +52,15 @@ class Category {
 
 	public function delete($id) {
 		try {
-            $sql = "DELETE FROM CMS_CATEGORIES WHERE category_id = ?";
+			$article = new Article();
+			$article->deleteFromCategoryId($id);
+
+            $sql = "DELETE FROM CMS_CATEGORIES WHERE category_id = ? or category_father_id = ?";
 			$stm = $this->pdo->prepare($sql);			          
-            $stm->execute(array($id));
+            $stm->execute(array(
+					$id,
+					$id
+				));
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}

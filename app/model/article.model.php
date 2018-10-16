@@ -1,6 +1,8 @@
 <?php
 require_once (Settings::PATH['entities'].'/article.entity.php');
 require_once (Settings::PATH['utils'].'/picture.utils.php');
+require_once (Settings::PATH['models'].'/link.model.php');
+require_once (Settings::PATH['models'].'/picture.model.php');
 
 class Article {
 	private $pdo;
@@ -8,9 +10,6 @@ class Article {
 	public function __CONSTRUCT() {
 		try {
 			$this->pdo = Database::StartUp();  		
-			
-			$link = new Link();
-			$picture = new Picture();
 		}
 		catch(Exception $e) {
 			die($e->getMessage());
@@ -65,6 +64,9 @@ class Article {
 
 	public function delete($id) {
 		try {
+			$link = new Link();
+			$picture = new Picture();
+
 			$article = $this->getOne($id);
 			if ($article->getPicture() != null) 
 				PictureUtils::removePicture($article->getPicture());
@@ -109,8 +111,10 @@ class Article {
 			$article = $this->getOne($data->getId());
 			if ($article->getPicture() != null)
 				PictureUtils::removePicture($article->getPicture());
-			PictureUtils::uploadPicture($data->getPicture());
-
+			$picture = PictureUtils::uploadPicture($data-getPicture());
+			if ($picture == Settings::ERRORS['FILE_NOT_UPLOAD'])
+				return Settings::ERRORS['FILE_NOT_UPLOAD'];
+				
 			$sql = "UPDATE CMS_ARTICLES SET 
 						name                = ?, 
 						description         = ?,
@@ -121,7 +125,7 @@ class Article {
 			$stm->execute(array(
 					$data->getName(),                        
                     $data->getDescription(),
-                    $data->getPicture(), 
+                    $picture, 
 					$data->getIdCategory(),
 					$data->getId()
 				));
@@ -132,7 +136,9 @@ class Article {
 
 	public function insert($data) {
 		try {
-			PictureUtils::uploadPicture($data->getPicture());
+			$picture = PictureUtils::uploadPicture($data-getPicture());
+			if ($picture == Settings::ERRORS['FILE_NOT_UPLOAD'])
+				return Settings::ERRORS['FILE_NOT_UPLOAD'];
 
             $sql = "INSERT INTO CMS_ARTICLES (name, description, picture, category_id) 
                     VALUES (?, ?, ?, ?)";
@@ -140,7 +146,7 @@ class Article {
             $stm->execute(array(
 					$data->getName(),
                     $data->getDescription(),
-                    $data->getPicture(), 
+                    $picture,
 					$data->getIdCategory()
 				));
 		} catch (Exception $e) {

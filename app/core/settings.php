@@ -22,6 +22,10 @@ class Settings {
         'utils' => self::ROOT_PATH.'/MVC-php/app/utils'
     ];
 
+    const ERRORS = [
+        'FILE_NOT_UPLOAD' => 0
+    ];
+
 }
 
 ?>

@@ -48,9 +48,8 @@ class ArticleController {
         $article->setId( (int) $_REQUEST['id']);
         $article->setName($_REQUEST['name']);
         $article->setDescription($_REQUEST['description']);
-        $article->setPicture($_REQUEST['picture'] != null ? $_REQUEST['picture'] : $this->articleModel->getPictureFromId($article->getId())['picture']);
+        $article->setPicture($_FILES['picture']);
         $article->setIdCategory($_REQUEST['idCategory']);
-
 
         $article->getId() > 0 ? $this->articleModel->update($article) : $this->articleModel->insert($article);
         

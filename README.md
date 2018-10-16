@@ -1,5 +1,5 @@
-# CMS with MVC and PHP
-Generic Content Management System (CMS) with menu structure stored in database. 
+# Crud with MVC and PHP
+Crud (Create, Read, Update and Delete) with menu structure stored in database. 
 Created in PHP with OOP and architecture model, view, controller (MVC) using PDO, MySQL and Bootstrap
 
 ## Getting Started
@@ -21,7 +21,7 @@ Finally, copy the files in your workplace on the server
 
 ### Running
 
-Access to CMS app in the url of server. ex:
+Access to CRUD app in the url of server. ex:
 
 ```
 http://localhost

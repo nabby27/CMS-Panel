@@ -1,4 +1,5 @@
 <?php
+
 class Database {
     
     public static function StartUp() {
@@ -15,3 +16,5 @@ class Database {
     }
 
 }
+
+?>

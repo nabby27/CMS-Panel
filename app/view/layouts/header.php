@@ -3,11 +3,11 @@
 	<head>
 		<title>CMS</title>
 
-		<link href="./assets/plugins/bootstrap-4.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="./assets/plugins/fontawesome-5.4.1/css/all.min.css" rel="stylesheet">
-		<script defer src="./assets/plugins/fontawesome-5.4.1/js/all.min.js"></script>
+		<link href="<?php echo Settings::SERVER_PATH ?>/assets/plugins/bootstrap-4.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="<?php echo Settings::SERVER_PATH ?>/assets/plugins/fontawesome-5.4.1/css/all.min.css" rel="stylesheet">
+		<script defer src="<?php echo Settings::SERVER_PATH ?>/assets/plugins/fontawesome-5.4.1/js/all.min.js"></script>
 
-		<link href="./app/styles/style.css" rel="stylesheet">
+		<link href="<?php echo Settings::SERVER_PATH ?>/app/styles/style.css" rel="stylesheet">
 		<meta charset="UTF-8" />
 
 	</head>

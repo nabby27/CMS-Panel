@@ -1,1 +1,1 @@
-<h1 class="text-info">Program by Iván Córdoba Donet</h1>
+<h1 class="text-info text-center">Program by Iván Córdoba Donet</h1>

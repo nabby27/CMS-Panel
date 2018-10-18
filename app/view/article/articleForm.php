@@ -2,7 +2,7 @@
     <?php echo $article->getId() != null ? $article->getId() : 'New article'; ?>
 </h1>
 
-<form class="border border-primary rounded p-4" action="<?php echo Settings::PATH['base'] ?>/article/save" method="post" enctype="multipart/form-data">
+<form class="border border-primary rounded p-4" action="<?php echo Settings::PATH['base'] ?>/article/save" method="post" enctype="multipart/form-data" novalidate>
     <input type="hidden" name="id" value="<?php echo $article->getId(); ?>" />
 
     <fieldset class="border border-black px-3 pb-3">
@@ -10,6 +10,9 @@
         <div class="form-group">
             <label>Name:</label>
             <input type="text" name="name" value="<?php echo $article->getName(); ?>" class="form-control" placeholder="Name" required>
+            <div class="invalid-feedback">
+                name is required field.
+            </div>
         </div>
         
         <div class="form-group">
@@ -30,7 +33,7 @@
 
         <div class="form-group">
         <label>Category:</label>
-        <select name="idCategory" class="form-control" required>
+        <select name="idCategory" class="form-control custom-select" required>
             <option value="" disabled selected>Choose...</option>
             <?php foreach($this->categoryModel->getAll() as $category): ?>
                 <option value="<?php echo $category->getId(); ?>" <?php if ($category->getId() == $article->getIdCategory()) echo 'selected'; ?> >

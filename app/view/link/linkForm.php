@@ -19,7 +19,7 @@
 
         <div class="form-group">
         <label>Article:</label>
-        <select name="idArticle" class="form-control" required>
+        <select name="idArticle" class="form-control custom-select" required>
             <option value="" disabled selected>Choose...</option>
             <?php foreach($this->articleModel->getAll() as $article): ?>
                 <option value="<?php echo $article->getId(); ?>" <?php if ($article->getId() == $link->getIdArticle()) echo 'selected'; ?> >

@@ -1,6 +1,7 @@
 <?php
+require_once (Settings::PATH['entities'].'/auth.entity.php');
 
-class UserEntity {
+class UserEntity extends AuthEntity{
 	//class properties
 	private $id;
 	private $username;
@@ -36,14 +37,6 @@ class UserEntity {
 
 	public function setId($id) {
 		$this->id = $id;
-	}
-
-	public function getUsername() {
-		return $this->username;
-	}
-
-	public function setUsername(string $username) {
-		$this->username = $username;
 	}
 
 	public function getName() {
@@ -84,22 +77,6 @@ class UserEntity {
 
 	public function setAddress(string $address) {
 		$this->address = $address;
-	}
-
-	public function getPassword() {
-		return $this->password;
-	}
-
-	public function setPassword(string $password) {
-		$this->password = $password;
-	}
-
-	public function getPassword2() {
-		return $this->password2;
-	}
-
-	public function setPassword2(string $password2) {
-		$this->password2 = $password2;
 	}
 
 	public function getIdType() {

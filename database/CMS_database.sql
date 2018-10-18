@@ -48,16 +48,27 @@ CREATE TABLE CMS_TYPE_OF_USERS (
   PRIMARY KEY (type_id)
 );
 
+INSERT INTO CMS_TYPE_OF_USERS (type_id, type_user) VALUES
+(1, 'administrador'),
+(2, 'usuario');
+
 CREATE TABLE CMS_USERS (
   user_id int(30) NOT NULL AUTO_INCREMENT,
-  username varchar(30) NOT NULL, 
   name varchar(50) NOT NULL,
   surname varchar(100) DEFAULT NULL,
   email varchar(100) DEFAULT NULL,
   telephon int(100) DEFAULT NULL,
   address varchar(100) DEFAULT NULL,
-  password varchar(100) NOT NULL,
   type_id int(30) DEFAULT 2,
   PRIMARY KEY (user_id),
   FOREIGN KEY (type_id) References CMS_TYPE_OF_USERS(type_id) ON DELETE CASCADE
+);
+
+CREATE TABLE CMS_AUTH (
+  auth_id int(30) NOT NULL AUTO_INCREMENT,
+  user_id int(30) NOT NULL,
+  username varchar(30) NOT NULL, 
+  password varchar(100) NOT NULL,
+  PRIMARY KEY (auth_id),
+  FOREIGN KEY (user_id) References CMS_USERS(user_id) ON DELETE CASCADE
 );

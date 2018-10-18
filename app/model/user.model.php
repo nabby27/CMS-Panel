@@ -1,5 +1,6 @@
 <?php
 require_once (Settings::PATH['entities'].'/user.entity.php');
+require_once (Settings::PATH['models'].'/auth.model.php');
 require_once (Settings::PATH['utils'].'/password.utils.php');
 
 class User {
@@ -38,6 +39,18 @@ class User {
 		}
 	}
 
+	public function getLastUserId() {
+		try {
+            $sql = "SELECT user_id FROM CMS_USERS ORDER BY user_id DESC LIMIT 1";
+			$stm = $this->pdo->prepare($sql);
+			$stm->execute();
+			return $stm->fetch();
+		}
+		catch(Exception $e) {
+			die($e->getMessage());
+		}
+	}
+
 	public function delete($id) {
 		try {
             $sql = "DELETE FROM CMS_USERS WHERE user_id = ?";
@@ -50,26 +63,21 @@ class User {
 
 	public function update($data) {
 		try {
-			$password = PasswordUtils::encrypt($data->getPassword());
 			$sql = "UPDATE CMS_USERS SET 
-						username		= ?,
 						name            = ?, 
 						surname         = ?,
 						email			= ?,					
 						telephon		= ?,
 						address         = ?,
-						password        = ?,
 						type_id         = ?
 				    WHERE user_id 		= ?";
             $stm = $this->pdo->prepare($sql);
 			$stm->execute(array(
-					$data->getUsername(),                        
 					$data->getName(),
                     $data->getSurname(),
                     $data->getEmail(), 
 					$data->getTelephon(),
 					$data->getAddress(),
-					$password,
 					$data->getIdType(),
 					$data->getId()
                 ));
@@ -80,20 +88,25 @@ class User {
 
 	public function insert($data) {
 		try {
-			$password = PasswordUtils::encrypt($data->getPassword());
-            $sql = "INSERT INTO CMS_USERS (name, username, surname, email, telephon, address, password, type_id) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			$auth = new Auth();
+			
+            $sql = "INSERT INTO CMS_USERS (name, surname, email, telephon, address, type_id) 
+                    VALUES (?, ?, ?, ?, ?, ?)";
             $stm = $this->pdo->prepare($sql);
             $stm->execute(array(
-					$data->getName(),
-					$data->getUsername(),                        
-                    $data->getSurname(),
-                    $data->getEmail(), 
-					$data->getTelephon(),
-					$data->getAddress(),
-					$password,
-					$data->getIdType(),
-                ));
+				$data->getName(),
+				$data->getSurname(),
+				$data->getEmail(), 
+				$data->getTelephon(),
+				$data->getAddress(),
+				$data->getIdType(),
+			));
+			
+			$data->setId((int) $this->getLastUserId()[0]);
+			$authData = $auth->getAuthByUserData($data);
+			
+			$auth->insert($authData);
+
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}

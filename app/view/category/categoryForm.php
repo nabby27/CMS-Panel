@@ -10,7 +10,7 @@
         
         <div class="form-group">
         <label>Category father:</label>
-        <select name="idCategoryFather" class="form-control" required <?php if ($category->getId() == 1 ) echo 'disabled' ?>>
+        <select name="idCategoryFather" class="form-control custom-select" required <?php if ($category->getId() == 1 ) echo 'disabled' ?>>
             <option value="" disabled selected>Choose...</option>
             <?php foreach($this->getAll() as $categoryFather): ?>
                 <option value="<?php echo $categoryFather->getId(); ?>" <?php if ($categoryFather->getId() == $category->getIdCategoryFather()) echo 'selected'; ?> >

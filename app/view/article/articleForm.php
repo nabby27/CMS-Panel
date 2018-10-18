@@ -2,7 +2,7 @@
     <?php echo $article->getId() != null ? $article->getId() : 'New article'; ?>
 </h1>
 
-<form class="border border-primary rounded p-4" action="?c=article&a=save" method="post" enctype="multipart/form-data">
+<form class="border border-primary rounded p-4" action="<?php echo Settings::PATH['base'] ?>/article/save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $article->getId(); ?>" />
 
     <fieldset class="border border-black px-3 pb-3">

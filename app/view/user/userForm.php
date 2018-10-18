@@ -2,7 +2,7 @@
     <?php echo $user->getId() != null ? $user->getId() : 'New user'; ?>
 </h1>
 
-<form class="border border-primary rounded p-4" action="?c=user&a=save" method="post" enctype="multipart/form-data">
+<form class="border border-primary rounded p-4" action="<?php echo Settings::PATH['base'] ?>/user/save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $user->getId(); ?>" />
     
     <fieldset class="border border-black px-3 pb-3 mb-4">

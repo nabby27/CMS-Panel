@@ -51,12 +51,12 @@ class UserController {
 
         $user->getId() > 0 ? $this->userModel->update($user) : $this->userModel->insert($user);
 
-        header('Location: index.php?c=user');
+        header('Location: '.Settings::PATH['base'].'/user');
     }
     
     public function delete() {
         $this->userModel->delete($_REQUEST['id']);
-        header('Location: index.php?c=user');
+        header('Location: '.Settings::PATH['base'].'/user');
     }
 
 }

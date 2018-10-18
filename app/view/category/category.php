@@ -1,4 +1,4 @@
-<a class="btn btn-primary text-center" href="?c=category&a=create"><i class="fas fa-plus"></i> Create</a>
+<a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/category/create"><i class="fas fa-plus"></i> Create</a>
 <hr/>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -12,13 +12,13 @@
             <?php foreach($categories as $category): ?>
                 <tr class="<?php if ($category->getId() < 2) echo 'bg-light'?>">
                     <td class="text-center">
-                        <a class="btn btn-danger <?php if ($category->getId() < 2) echo 'disabled'?>" onclick="javascript:return confirm('Do you want delete this category?');" href="?c=category&a=delete&id=<?php echo $category->getId(); ?>">Delete</a>
+                        <a class="btn btn-danger <?php if ($category->getId() < 2) echo 'disabled'?>" onclick="javascript:return confirm('Do you want delete this category?');" href="<?php echo Settings::PATH['base'] ?>/category/delete/<?php echo $category->getId(); ?>">Delete</a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-warning" href="?c=category&a=edit&id=<?php echo $category->getId(); ?>">Edit</a>
+                        <a class="btn btn-warning" href="<?php echo Settings::PATH['base'] ?>/category/edit/<?php echo $category->getId(); ?>">Edit</a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-info" href="?c=article&a=list&idCategory=<?php echo $category->getId(); ?>">Articles</a>
+                        <a class="btn btn-info" href="<?php echo Settings::PATH['base'] ?>/article/list/category/<?php echo $category->getId(); ?>">Articles</a>
                     </td>
                     <td class="text-center"><?php echo $category->getId(); ?></td>
                     <?php foreach($categories as $categoryFather): ?>

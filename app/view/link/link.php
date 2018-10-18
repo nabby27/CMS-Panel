@@ -1,4 +1,4 @@
-<a class="btn btn-primary text-center" href="?c=link&a=create"><i class="fas fa-plus"></i> Create</a>
+<a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/link/create"><i class="fas fa-plus"></i> Create</a>
 <hr/>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -12,10 +12,10 @@
             <?php foreach($links as $link): ?>
                 <tr>
                     <td class="text-center">
-                        <a class="btn btn-danger" onclick="javascript:return confirm('Do you want delete this link?');" href="?c=link&a=delete&id=<?php echo $link->getId(); ?>">Delete</a>
+                        <a class="btn btn-danger" onclick="javascript:return confirm('Do you want delete this link?');" href="<?php echo Settings::PATH['base'] ?>/link/delete/<?php echo $link->getId(); ?>">Delete</a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-warning" href="?c=link&a=edit&id=<?php echo $link->getId(); ?>">Edit</a>
+                        <a class="btn btn-warning" href="<?php echo Settings::PATH['base'] ?>/link/edit/<?php echo $link->getId(); ?>">Edit</a>
                     </td>
                     <td class="text-center"><?php echo $link->getId(); ?></td>
                     <td class="text-center"><?php echo $link->getName(); ?></td>

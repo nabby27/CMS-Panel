@@ -53,12 +53,12 @@ class ArticleController {
 
         $article->getId() > 0 ? $this->articleModel->update($article) : $this->articleModel->insert($article);
         
-        header('Location: index.php?c=article');
+        header('Location: '.Settings::PATH['base'].'/article');
     }
     
     public function delete() {
         $this->articleModel->delete($_REQUEST['id']);
-        header('Location: index.php?c=article');
+        header('Location: '.Settings::PATH['base'].'/article');
     }
 
 }

@@ -1,4 +1,4 @@
-<a class="btn btn-primary text-center" href="?c=picture&a=create"><i class="fas fa-plus"></i> Create</a>
+<a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/picture/create"><i class="fas fa-plus"></i> Create</a>
 <hr/>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -12,10 +12,10 @@
             <?php foreach($pictures as $picture): ?>
                 <tr>
                     <td class="text-center">
-                        <a class="btn btn-danger" onclick="javascript:return confirm('Do you want delete this picture?');" href="?c=picture&a=delete&id=<?php echo $picture->getId(); ?>">Delete</a>
+                        <a class="btn btn-danger" onclick="javascript:return confirm('Do you want delete this picture?');" href="<?php echo Settings::PATH['base'] ?>/picture/delete/<?php echo $picture->getId(); ?>">Delete</a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-warning" href="?c=picture&a=edit&id=<?php echo $picture->getId(); ?>">Edit</a>
+                        <a class="btn btn-warning" href="<?php echo Settings::PATH['base'] ?>/picture/edit/<?php echo $picture->getId(); ?>">Edit</a>
                     </td>
                     <td class="text-center"><?php echo $picture->getId(); ?></td>
                     <td class="text-center"><?php echo $picture->getPicture(); ?></td>

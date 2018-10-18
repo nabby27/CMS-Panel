@@ -46,12 +46,12 @@ class CategoryController {
 
         $category->getId() > 0 ? $this->categoryModel->update($category) : $this->categoryModel->insert($category);
         
-        header('Location: index.php?c=category');
+        header('Location: '.Settings::PATH['base'].'/category');
     }
     
     public function delete() {
         $this->categoryModel->delete($_REQUEST['id']);
-        header('Location: index.php?c=category');
+        header('Location: '.Settings::PATH['base'].'/category');
     }
 
 }

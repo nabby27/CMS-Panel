@@ -53,12 +53,12 @@ class LinkController {
 
         $link->getId() > 0 ? $this->linkModel->update($link) : $this->linkModel->insert($link);
         
-        header('Location: index.php?c=link');
+        header('Location: '.Settings::PATH['base'].'/link');
     }
     
     public function delete() {
         $this->linkModel->delete($_REQUEST['id']);
-        header('Location: index.php?c=link');
+        header('Location: '.Settings::PATH['base'].'/link');
     }
 
 }

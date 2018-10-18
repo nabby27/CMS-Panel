@@ -1,4 +1,4 @@
-<a class="btn btn-primary text-center" href="?c=article&a=create"><i class="fas fa-plus"></i> Create</a>
+<a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/article/create"><i class="fas fa-plus"></i> Create</a>
 <hr/>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -14,16 +14,16 @@
             <?php foreach($articles as $article): ?>
                 <tr>
                     <td class="text-center">
-                        <a class="btn btn-danger" onclick="javascript:return confirm('Do you want delete this article?');" href="?c=article&a=delete&id=<?php echo $article->getId(); ?>">Delete</a>
+                        <a class="btn btn-danger" onclick="javascript:return confirm('Do you want delete this article?');" href="<?php echo Settings::PATH['base'] ?>/article/delete/<?php echo $article->getId(); ?>">Delete</a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-warning" href="?c=article&a=edit&id=<?php echo $article->getId(); ?>">Edit</a>
+                        <a class="btn btn-warning" href="<?php echo Settings::PATH['base'] ?>/article/edit/<?php echo $article->getId(); ?>">Edit</a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-info" href="?c=picture&a=list&idArticle=<?php echo $article->getId(); ?>">Pictures</a>
+                        <a class="btn btn-info" href="<?php echo Settings::PATH['base'] ?>/picture/list/article/<?php echo $article->getId(); ?>">Pictures</a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-info" href="?c=link&a=list&idArticle=<?php echo $article->getId(); ?>">Links</a>
+                        <a class="btn btn-info" href="<?php echo Settings::PATH['base'] ?>/link/list/article/<?php echo $article->getId(); ?>">Links</a>
                     </td>
                     <td class="text-center"><?php echo $article->getId(); ?></td>
                     <td class="text-center"><?php echo $article->getName(); ?></td>

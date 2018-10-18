@@ -17,16 +17,16 @@
 		<header>
 			<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
 				<div>
-					<a class="navbar-brand" href="?c=home">
+					<a class="navbar-brand" href="<?php echo Settings::PATH['base'] ?>/home">
 						<img class="ml-5 mr-5" src="<?php echo Settings::SERVER_PATH ?>/resources/images/favicon.ico" width="30" height="30" alt="">
 					</a>
 				</div>
 				<ul class="navbar-nav">
-					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'category') echo 'active'; ?>" href="?c=category">Categories</a></li>
-					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'article') echo 'active'; ?>" href="?c=article">Articles</a></li>
-					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'link') echo 'active'; ?>" href="?c=link">Links</a></li>
-					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'picture') echo 'active'; ?>" href="?c=picture">Pictures</a></li>
-					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'user') echo 'active'; ?>" href="?c=user">Users</a></li>
+					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'category') echo 'active'; ?>" href="<?php echo Settings::PATH['base'] ?>/category">Categories</a></li>
+					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'article') echo 'active'; ?>" href="<?php echo Settings::PATH['base'] ?>/article">Articles</a></li>
+					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'link') echo 'active'; ?>" href="<?php echo Settings::PATH['base'] ?>/link">Links</a></li>
+					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'picture') echo 'active'; ?>" href="<?php echo Settings::PATH['base'] ?>/picture">Pictures</a></li>
+					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'user') echo 'active'; ?>" href="<?php echo Settings::PATH['base'] ?>/user">Users</a></li>
 				</ul>
 			</div>
 		</header>

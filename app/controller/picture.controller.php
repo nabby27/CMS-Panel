@@ -52,12 +52,12 @@ class PictureController {
         $picture->setIdArticle($_REQUEST['idArticle']);
         $picture->getId() > 0 ? $this->pictureModel->update($picture) : $this->pictureModel->insert($picture);
         
-        header('Location: index.php?c=picture');
+        header('Location: '.Settings::PATH['base'].'/picture');
     }
     
     public function delete() {
         $this->pictureModel->delete($_REQUEST['id']);
-        header('Location: index.php?c=picture');
+        header('Location: '.Settings::PATH['base'].'/picture');
     }
 
 }

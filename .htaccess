@@ -1,21 +1,19 @@
-#Options +FollowSymLinks
-#RewriteEngine On
+Options +FollowSymLinks
+RewriteEngine On
 
-#RewriteCond %{SCRIPT_FILENAME} !-f
-#RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
 
-#DirectoryIndex index.php
+<Files .htaccess>
+    Order allow,deny
+    Deny from all
+</Files>
 
-#<Files .htaccess>
-#    Order allow,deny
-#    Deny from all
-#</Files>
+RewriteRule ^([a-zA-Z0-9]+)$ ./index.php?c=$1 
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ ./index.php?c=$1&a=$2 
+RewriteRule ^([a-zA-Z0-9]+)/edit/([a-zA-Z0-9]+)$ ./index.php?c=$1&a=edit&id=$2 
+RewriteRule ^([a-zA-Z0-9]+)/delete/([a-zA-Z0-9]+)$ ./index.php?c=$1&a=delete&id=$2 
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/article/([a-zA-Z0-9]+)$ ./index.php?c=$1&a=$2&idArticle=$3 
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/category/([a-zA-Z0-9]+)$ ./index.php?c=$1&a=$2&idCategory=$3 
 
-
-#RewriteRule ^.*$ ./index.php 
-#RewriteRule ^/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/category/([a-zA-Z0-9]+)$ ./index.php?c=$1&a=$2&idCategory=$3 
-#RewriteRule ^/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/article/([a-zA-Z0-9]+)$ ./index.php?c=$1&a=$2&idArticle=$3 
-#RewriteRule ^/([a-zA-Z0-9]+)/delete/([a-zA-Z0-9]+)$ ./index.php?c=$1&a=delete&id=$2 
-#RewriteRule ^/([a-zA-Z0-9]+)/edit/([a-zA-Z0-9]+)$ ./index.php?c=$1&a=edit&id=$2 
-#RewriteRule ^/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ ./index.php?c=$1&a=$2 
-#RewriteRule ^/([a-zA-Z0-9]+)$ ./index.php?c=$1 
+ErrorDocument 404 /app/view/error/404.php

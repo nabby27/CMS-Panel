@@ -16,11 +16,15 @@ if(!isset($_REQUEST['c'])) {
 else {
     $controller = strtolower($_REQUEST['c']);
     $action = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'index';
-    
-    require_once (Settings::PATH['controllers']."/$controller.controller.php");
+    $file = Settings::PATH['controllers']."/$controller.controller.php";
+    if (!file_exists($file))
+        require_once (Settings::PATH['404']);
+    require_once ($file);
     $controller = ucwords($controller) . 'Controller';
     $controller = new $controller;
     
+    if (!(method_exists($controller, $action) && is_callable(array($controller, $action))))
+        require_once (Settings::PATH['404']);
     call_user_func(array($controller, $action));
 }
 

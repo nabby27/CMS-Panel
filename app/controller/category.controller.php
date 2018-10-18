@@ -35,11 +35,15 @@ class CategoryController {
     
     public function save() {
         $category = new CategoryEntity();
-
-        $category->setId($_REQUEST['id']);
-        $category->setIdCategoryFather($_REQUEST['idCategoryFather']);
-        $category->setName($_REQUEST['name']);
+        $categoryModel = new Category();
         
+        $category->setId($_REQUEST['id']);
+        if ($_REQUEST['idCategoryFather'] == null)
+            $category->setIdCategoryFather($categoryModel->getOne($category->getId())->getIdCategoryFather());
+        else
+            $category->setIdCategoryFather($_REQUEST['idCategoryFather']);
+        $category->setName($_REQUEST['name']);
+
         $category->getId() > 0 ? $this->categoryModel->update($category) : $this->categoryModel->insert($category);
         
         header('Location: index.php?c=category');

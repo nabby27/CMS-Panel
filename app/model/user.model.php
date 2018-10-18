@@ -50,10 +50,7 @@ class User {
 
 	public function update($data) {
 		try {
-			if (!PasswordUtils::verifyPasswords($data->getPassword(), $data->getPassword2()))
-				return Settings::ERRORS['PASSWORD_NOT_MATCH'];
 			$password = PasswordUtils::encrypt($data->getPassword());
-
 			$sql = "UPDATE CMS_USERS SET 
 						username		= ?,
 						name            = ?, 
@@ -83,8 +80,6 @@ class User {
 
 	public function insert($data) {
 		try {
-			if (!PasswordUtils::verifyPasswords($data->getPassword(), $data->getPassword2()))
-				return Settings::ERRORS['PASSWORD_NOT_MATCH'];
 			$password = PasswordUtils::encrypt($data->getPassword());
             $sql = "INSERT INTO CMS_USERS (name, username, surname, email, telephon, address, password, type_id) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)";

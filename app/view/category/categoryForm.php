@@ -2,7 +2,7 @@
     <?php echo $category->getId() != null ? $category->getId() : 'New category'; ?>
 </h1>
 
-<form class="border border-primary rounded p-4" action="<?php echo Settings::PATH['base'] ?>/category/save" method="post" enctype="multipart/form-data">
+<form class="border border-info rounded p-4" action="<?php echo Settings::PATH['base'] ?>/category/save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $category->getId(); ?>" />
 
     <fieldset class="border border-black px-3 pb-3 mb-4">

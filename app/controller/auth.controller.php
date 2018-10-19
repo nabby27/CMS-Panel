@@ -1,7 +1,7 @@
 <?php
 require_once (Settings::PATH['models'].'/auth.model.php');
 require_once (Settings::PATH['models'].'/user.model.php');
-require_once (Settings::PATH['models'].'/typeUser.model.php');
+require_once (Settings::PATH['utils'].'/password.utils.php');
 
 class AuthController {
     
@@ -10,6 +10,7 @@ class AuthController {
     public function __CONSTRUCT() {
         $this->authModel = new Auth();
         $this->userModel = new User();
+        $error = null;
     }
     
     public function edit() {
@@ -21,22 +22,33 @@ class AuthController {
         }
         require_once (Settings::PATH['views'].'/auth/authForm.php');
     }
-    
-    public function save() {
+
+    public function validate() {
         $auth = new AuthEntity();
+        $user = new UserEntity();
 
-        $user->setId($_REQUEST['id']);
-        $user->setUsername($_REQUEST['username']);
-        $user->setName($_REQUEST['name']);
-        $user->setSurname($_REQUEST['surname']);      
-        $user->setEmail($_REQUEST['email']);
-        $user->setTelephon($_REQUEST['telephon']);
-        $user->setAddress($_REQUEST['address']);
-        $user->setPassword($_REQUEST['password']);
-        $user->setIdType($_REQUEST['idType']);
-
-        $this->userModel->update($user);
-
+        $user = $this->userModel->getOne($_REQUEST['idUser']);
+        $auth->setAuthId($_REQUEST['idAuth']);
+        $auth->setUsername($_REQUEST['username']);
+        $auth->setPassword($_REQUEST['newPassword']);
+        
+        $currentPassword = $this->authModel->getOne($_REQUEST['idAuth'])->getPassword(); 
+        if (!PasswordUtils::verify($_REQUEST['currentPassword'], $currentPassword)) {
+            $error['INVALID_PASSWORD'] = Settings::ERRORS['INVALID_PASSWORD'];
+        }
+        if ($auth->getPassword() != $_REQUEST['repeatPassword']) {
+            $error['PASSWORDS_NOT_MATCH'] = Settings::ERRORS['PASSWORDS_NOT_MATCH'];           
+        } 
+        if ($error != null) {
+            require_once (Settings::PATH['views'].'/auth/authForm.php');
+        }
+        else {
+            $this->save($auth);
+        }
+    }
+    
+    public function save($auth) {
+        $this->authModel->update($auth);
         header('Location: '.Settings::PATH['base'].'/user');
     }
 

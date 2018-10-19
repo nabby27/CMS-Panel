@@ -2,7 +2,7 @@
     <?php echo $picture->getId() != null ? $picture->getId() : 'New picture'; ?>
 </h1>
 
-<form class="border border-primary rounded p-4" action="<?php echo Settings::PATH['base'] ?>/picture/save" method="post" enctype="multipart/form-data">
+<form class="border border-info rounded p-4" action="<?php echo Settings::PATH['base'] ?>/picture/save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $picture->getId(); ?>" />
 
     <fieldset class="border border-black px-3 pb-3 mb-4">

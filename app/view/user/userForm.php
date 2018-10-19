@@ -2,30 +2,35 @@
     <?php echo $user->getId() != null ? $user->getId() : 'New user'; ?>
 </h1>
 
-<form class="border border-primary rounded p-4" action="<?php echo Settings::PATH['base'] ?>/user/save" method="post" enctype="multipart/form-data">
+<form class="border border-info rounded p-4" action="<?php echo Settings::PATH['base'] ?>/user/save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $user->getId(); ?>" />
     
     <fieldset class="border border-black px-3 pb-3 mb-4">
         <legend>Account data</legend>
         
         <div class="form-group">
-            <label>Username:</label>
+            <label>Name:</label>
             <input type="text" name="name" value="<?php echo $user->getName(); ?>" class="form-control" placeholder="Name" required>
         </div>
 
         <div class="form-group">
-            <label>Current password:</label>
+            <label>Surname:</label>
             <input type="text" name="surname" value="<?php echo $user->getSurname(); ?>" class="form-control" placeholder="Surname" required>
         </div>
 
         <div class="form-group">
-            <label>New password:</label>
+            <label>Email:</label>
             <input type="email" name="email" value="<?php echo $user->getEmail(); ?>" class="form-control" placeholder="Email" required>
         </div>
 
         <div class="form-group">
-            <label>Repeat the password:</label>
+            <label>Telephon:</label>
             <input type="number" name="telephon" value="<?php echo $user->getTelephon(); ?>" class="form-control" placeholder="Telephon" required>
+        </div>
+
+        <div class="form-group">
+            <label>Address:</label>
+            <input type="text" name="address" value="<?php echo $user->getAddress(); ?>" class="form-control" placeholder="Address" required>
         </div>
 
     </fieldset>
@@ -36,13 +41,12 @@
             
             <div class="form-group">
                 <label>Username:</label>
-                <input type="text" name="username" value="<?php echo $user->getUsername(); ?>" class="form-control" placeholder="Username" required>
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
             </div>
-
 
             <div class="form-group">
                 <label>Password:</label>
-                <input type="password" name="password" value="<?php echo $user->getPassword(); ?>" class="form-control" placeholder="Password" required
+                <input type="password" name="password" class="form-control" placeholder="Password" required
                     <?php if ($user->getId() == 1) echo 'disabled'?> >
             </div>
         <?php } ?>
@@ -58,6 +62,9 @@
                 <?php endforeach; ?>
             </select>
         </div>
+        <?php if ($user->getId() == 1) { ?>
+            <input type="hidden" name="idType" value="<?php echo $typeUser->getId(); ?>" />
+        <?php } ?>
     </fieldset>
 
     <hr/>

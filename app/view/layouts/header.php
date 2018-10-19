@@ -17,8 +17,8 @@
 		<header>
 			<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
 				<div>
-					<a class="navbar-brand" href="<?php echo Settings::PATH['base'] ?>/home">
-						<img class="ml-5 mr-5" src="<?php echo Settings::SERVER_PATH ?>/resources/images/favicon.ico" width="30" height="30" alt="">
+					<a class="navbar-brand ml-5 mr-5" href="<?php echo Settings::PATH['base'] ?>/home">
+						<i class="fas fa-home fa-2x"></i>
 					</a>
 				</div>
 				<ul class="navbar-nav">

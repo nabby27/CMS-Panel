@@ -13,6 +13,10 @@ class PasswordUtils {
         return ($pass == $pass2);
     }
 
+    public function verify($passString, $passHash) {
+        return password_verify($passString, $passHash);
+    }
+
 }
 
 ?>

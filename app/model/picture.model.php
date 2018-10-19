@@ -87,7 +87,6 @@ class Picture {
 
 	public function update($data) {
 		try {
-			echo "Hola";
 			$picture = $this->getOne($data->getId());
 			if ($data->getPicture()['size'] > 0) {
 				if ($picture->getPicture() != null)

@@ -53,7 +53,6 @@ class Auth {
     public function getAuthByUserData($data) {
         $auth = new AuthEntity();
         
-        var_dump($data->getId());
         $auth->setUserId($data->getId());
         $auth->setPassword($data->getPassword());
         $auth->setUsername($data->getUsername());
@@ -92,7 +91,7 @@ class Auth {
 			$stm->execute(array(
 					$data->getUsername(),                        
 					$password,
-					$data->getId()
+					$data->getAuthId()
                 ));
 		} catch (Exception $e) {
 			die($e->getMessage());
@@ -109,7 +108,7 @@ class Auth {
                     $data->getUserId(),
 					$data->getUsername(),                        
 					$password
-                ));
+				));
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}

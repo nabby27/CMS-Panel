@@ -2,7 +2,7 @@
     <?php echo $article->getId() != null ? $article->getId() : 'New article'; ?>
 </h1>
 
-<form class="border border-primary rounded p-4" action="<?php echo Settings::PATH['base'] ?>/article/save" method="post" enctype="multipart/form-data" novalidate>
+<form class="border border-info rounded p-4" action="<?php echo Settings::PATH['base'] ?>/article/save" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $article->getId(); ?>" />
 
     <fieldset class="border border-black px-3 pb-3">
@@ -10,9 +10,6 @@
         <div class="form-group">
             <label>Name:</label>
             <input type="text" name="name" value="<?php echo $article->getName(); ?>" class="form-control" placeholder="Name" required>
-            <div class="invalid-feedback">
-                name is required field.
-            </div>
         </div>
         
         <div class="form-group">

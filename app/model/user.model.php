@@ -100,13 +100,7 @@ class User {
 				$data->getTelephon(),
 				$data->getAddress(),
 				$data->getIdType(),
-			));
-			
-			$data->setId((int) $this->getLastUserId()[0]);
-			$authData = $auth->getAuthByUserData($data);
-			
-			$auth->insert($authData);
-
+			));			
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}

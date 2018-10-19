@@ -28,7 +28,9 @@ class Settings {
     const SERVER_PATH = 'http://localhost'.self::PATH['base'];
 
     const ERRORS = [
-        'FILE_NOT_UPLOAD' => 0
+        'FILE_NOT_UPLOAD' => 0,
+        'INVALID_PASSWORD' => 1,
+        'PASSWORDS_NOT_MATCH' => 2
     ];
 
 }

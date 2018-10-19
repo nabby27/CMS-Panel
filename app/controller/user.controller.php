@@ -1,5 +1,6 @@
 <?php
 require_once (Settings::PATH['models'].'/user.model.php');
+require_once (Settings::PATH['models'].'/auth.model.php');
 require_once (Settings::PATH['models'].'/typeUser.model.php');
 
 class UserController {
@@ -8,6 +9,7 @@ class UserController {
     
     public function __CONSTRUCT() {
         $this->userModel = new User();
+        $this->authModel = new Auth();
         $this->typeUserModel = new TypeUser();
     }
     
@@ -38,18 +40,27 @@ class UserController {
     
     public function save() {
         $user = new UserEntity();
+        $auth = new AuthEntity();
 
         $user->setId($_REQUEST['id']);
-        $user->setUsername($_REQUEST['username']);
         $user->setName($_REQUEST['name']);
         $user->setSurname($_REQUEST['surname']);      
         $user->setEmail($_REQUEST['email']);
         $user->setTelephon($_REQUEST['telephon']);
         $user->setAddress($_REQUEST['address']);
-        $user->setPassword($_REQUEST['password']);
         $user->setIdType($_REQUEST['idType']);
+        
+        if ($user->getId() > 0) {
+            $this->userModel->update($user);  
+        } else {
+            $this->userModel->insert($user);  
+            
+            $auth->setUsername($_REQUEST['username']);
+            $auth->setPassword($_REQUEST['password']);
+            $auth->setUserId((int) $this->userModel->getLastUserId());
+            $this->authModel->insert($auth);
+        }
 
-        $user->getId() > 0 ? $this->userModel->update($user) : $this->userModel->insert($user);
 
         header('Location: '.Settings::PATH['base'].'/user');
     }

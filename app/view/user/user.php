@@ -24,20 +24,19 @@
                     </td>
 
                     <td class="text-center"><?php echo $user->getId(); ?></td>
-                    <td class="text-center"><?php echo $user->getName(); ?></td>
-                    <td class="text-center"><?php echo $user->getSurname(); ?></td>
-                    <td class="text-center"><?php echo $user->getEmail(); ?></td>
-                    <td class="text-center"><?php echo $user->getTelephon(); ?></td>
-                    <td class="text-center"><?php echo $user->getAddress(); ?></td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $user->getName(); ?>"><?php echo $user->getName(); ?></td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $user->getSurname(); ?>"><?php echo $user->getSurname(); ?></td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $user->getEmail(); ?>"><?php echo $user->getEmail(); ?></td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $user->getTelephon(); ?>"><?php echo $user->getTelephon(); ?></td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $user->getAddress(); ?>"><?php echo $user->getAddress(); ?></td>
                     <?php foreach($typeUsers as $typeUser): ?>
-                        <?php if ($typeUser->getId() == $user->getIdType()) echo "<td class='text-center'>".$typeUser->getTypeUser()."</td>"; ?>
+                        <?php if ($typeUser->getId() == $user->getIdType()) echo "<td class='text-center' data-toggle='tooltip' data-placement='top' title='".$typeUser->getTypeUser()."'>".$typeUser->getTypeUser()."</td>"; ?>
                     <?php endforeach; ?>
-                    
                 </tr>
             <?php endforeach; ?>
         <?php } else { ?>
             <tr>
-                <td colspan="11" class="text-center text-info bg-light"> THERE ARE NO RECORDS </td>
+                <td colspan="10" class="text-center text-info bg-light"> THERE ARE NO RECORDS </td>
             </tr>
         <?php } ?>
     </table>

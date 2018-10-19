@@ -218,11 +218,3 @@ INSERT INTO CMS_LINKS (link_id, name, link, article_id) VALUES
 (64, 'Trailer', 'https://www.youtube.com/watch?v=NiBx8YAMeYA', 22),
 (65, 'Filmaffinity', 'http://www.filmaffinity.com/es/film235504.html', 22),
 (66, 'Wikipedia', 'https://es.wikipedia.org/wiki/Detective_Conan', 22);
-
-INSERT INTO CMS_TYPE_OF_USERS (type_id, type_user) VALUES
-(1, 'administrador'),
-(2, 'usuario');
-
-INSERT INTO CMS_USERS (user_id, username, name, surname, email, telephon, address, password, type_id) VALUES
-(1, 'pepito24', 'Pepe', 'Garcia Garcia', 'pepe123@gmail.com', 964585296, 'C/De Mentira 555', '12345', 1),
-(2, 'ivan27', 'Ivan', 'Cordoba Donet', 'ivan27@gmail.com', 963485214, 'Av Sin name 111','12345', 2);

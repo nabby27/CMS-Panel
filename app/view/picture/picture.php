@@ -18,10 +18,10 @@
                         <a class="btn btn-warning" href="<?php echo Settings::PATH['base'] ?>/picture/edit/<?php echo $picture->getId(); ?>">Edit</a>
                     </td>
                     <td class="text-center"><?php echo $picture->getId(); ?></td>
-                    <td class="text-center"><?php echo $picture->getPicture(); ?></td>
-                    <td class="text-center"><?php echo $picture->getDescription(); ?></td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $picture->getPicture(); ?>"><?php echo $picture->getPicture(); ?></td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $picture->getDescription(); ?>"><?php echo $picture->getDescription(); ?></td>
                     <?php foreach($this->articleModel->getAll() as $article): ?>
-                        <?php if ($article->getId() == $picture->getIdArticle()) echo "<td class='text-center'>".$article->getName()."</td>"; ?>
+                        <?php if ($article->getId() == $picture->getIdArticle()) echo "<td class='text-center' data-toggle='tooltip' data-placement='top' title='".$article->getName()."'>".$article->getName()."</td>"; ?>
                     <?php endforeach; ?>
 
                 </tr>

@@ -26,9 +26,9 @@
                         <a class="btn btn-info" href="<?php echo Settings::PATH['base'] ?>/link/list/article/<?php echo $article->getId(); ?>">Links</a>
                     </td>
                     <td class="text-center"><?php echo $article->getId(); ?></td>
-                    <td class="text-center"><?php echo $article->getName(); ?></td>
-                    <td class="text-center"><?php echo $article->getDescription(); ?></td>
-                    <td class="text-center"><?php echo $article->getPicture(); ?></td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $article->getName(); ?>"><?php echo $article->getName(); ?></td>
+                    <td class="text-center truncate"  data-toggle="tooltip" data-placement="top" title="<?php echo $article->getDescription(); ?>"><?php echo $article->getDescription(); ?></td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $article->getPicture(); ?>"><?php echo $article->getPicture(); ?></td>
                     <?php foreach($this->categoryModel->getAll() as $category): ?>
                         <?php if ($category->getId() == $article->getIdCategory()) echo "<td class='text-center'>".$category->getName()."</td>"; ?>
                     <?php endforeach; ?>

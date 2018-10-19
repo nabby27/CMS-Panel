@@ -15,13 +15,13 @@
     
     <body>
 		<header>
-			<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+			<div class="navbar fixed-top navbar-expand navbar-dark bg-dark">
 				<div>
 					<a class="navbar-brand ml-5 mr-5" href="<?php echo Settings::PATH['base'] ?>/home">
 						<i class="fas fa-home fa-2x"></i>
 					</a>
 				</div>
-				<ul class="navbar-nav">
+				<ul class="navbar-nav nav">
 					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'category') echo 'active'; ?>" href="<?php echo Settings::PATH['base'] ?>/category">Categories</a></li>
 					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'article') echo 'active'; ?>" href="<?php echo Settings::PATH['base'] ?>/article">Articles</a></li>
 					<li><a class="nav-item nav-link px-5 <?php if ($_REQUEST['c'] == 'link') echo 'active'; ?>" href="<?php echo Settings::PATH['base'] ?>/link">Links</a></li>
@@ -31,6 +31,6 @@
 			</div>
 		</header>
 		
-		<div class="container py-5 my-5">
+		<div class="mx-5 py-5 my-5">
 		<br>
 		

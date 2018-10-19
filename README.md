@@ -3,11 +3,11 @@
 This project consists of a CMS Panel (Content Management System) which only uses HTML, PHP, Bootstrap, Fontawesome icons and PDO statements to connect to the MySQL database. 
 
 ###### Some of the features are: 
-* Encryption of passwords 
-* OOP (object-oriented programming)
-* Architecture pattern MVC (Model, View, Controller)
-* Upload and delete images
-* URL friendly with .htacces
+###### * Encryption of passwords 
+###### * OOP (object-oriented programming)
+###### * Architecture pattern MVC (Model, View, Controller)
+###### * Upload and delete images
+###### * URL friendly with .htacces
 
 ## Getting Started
 

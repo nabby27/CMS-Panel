@@ -8,6 +8,7 @@ This project consists of a CMS Panel (Content Management System) which only uses
 > - Architecture pattern MVC (Model, View, Controller)
 > - Upload and delete images
 > - URL friendly with .htacces
+> - 404 page not found implement
 
 ## Getting Started
 

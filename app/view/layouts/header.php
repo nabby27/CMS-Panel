@@ -31,6 +31,6 @@
 			</div>
 		</header>
 		
-		<div class="mx-5 py-5 my-5">
+		<div class="container py-5 my-5">
 		<br>
 		

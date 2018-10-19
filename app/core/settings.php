@@ -14,15 +14,15 @@ class Settings {
 
     const PATH = [
         'root' => self::ROOT_PATH,
-        'base' => '/MVC-php',
-        'img' => '/MVC-php/assets/images',
-        'models' => self::ROOT_PATH.'/MVC-php/app/model',
-        'controllers' => self::ROOT_PATH.'/MVC-php/app/controller',
-        'views' => self::ROOT_PATH.'/MVC-php/app/view',
-        'entities' => self::ROOT_PATH.'/MVC-php/app/entity',
-        'core' => self::ROOT_PATH.'/MVC-php/app/core',
-        'utils' => self::ROOT_PATH.'/MVC-php/app/utils',
-        '404' => self::ROOT_PATH.'/MVC-php/app/view/error/404.php'
+        'base' => '/CMS-Panel',
+        'img' => '/CMS-Panel/assets/images',
+        'models' => self::ROOT_PATH.'/CMS-Panel/app/model',
+        'controllers' => self::ROOT_PATH.'/CMS-Panel/app/controller',
+        'views' => self::ROOT_PATH.'/CMS-Panel/app/view',
+        'entities' => self::ROOT_PATH.'/CMS-Panel/app/entity',
+        'core' => self::ROOT_PATH.'/CMS-Panel/app/core',
+        'utils' => self::ROOT_PATH.'/CMS-Panel/app/utils',
+        '404' => self::ROOT_PATH.'/CMS-Panel/app/view/error/404.php'
     ];
 
     const SERVER_PATH = 'http://localhost'.self::PATH['base'];

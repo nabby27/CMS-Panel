@@ -22,7 +22,7 @@ or server like [xamp](https://www.apachefriends.org/es/index.html)
 
 ### Installing
 
-First of all create the database with the script that is in the database folder, 
+First of all create the database with the script that is in the database folder. 
 Modify the `app/core/settings.php` file by putting your connection data to the database and the diferents paths. 
 Finally, copy the files in your public folder on the server.
 

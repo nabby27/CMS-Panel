@@ -50,6 +50,7 @@ class PictureController {
         $picture->setPicture($_FILES['picture']);
         $picture->setDescription($_REQUEST['description']);      
         $picture->setIdArticle($_REQUEST['idArticle']);
+        
         $picture->getId() > 0 ? $this->pictureModel->update($picture) : $this->pictureModel->insert($picture);
         
         header('Location: '.Settings::PATH['base'].'/picture');

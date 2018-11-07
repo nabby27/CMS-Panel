@@ -9,9 +9,9 @@ class PictureUtils {
             $picture['type'] == 'image/jpg' ||
             $picture['type'] == 'image/JPG' ||
             $picture['type'] == 'image/pjpeg') &&
-            $picture['size'] < 1000000
+            $picture['size'] < 2000000
         ) {
-            if (is_uploaded_file ($picture['tmp_name'])){
+            if (is_uploaded_file($picture['tmp_name'])){
                 $nameDirectory = Settings::ROOT_PATH.Settings::PATH['img'];
                 $idUnique = time();
                 $nameFile = $idUnique."-".$picture['name'];

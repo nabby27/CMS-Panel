@@ -1,6 +1,10 @@
 <?php
 declare(strict_types = 1);
 require_once ('app/core/settings.php');
+if (GlobalSettings::ENVIRONMENT == 'DEV')
+    require_once ('app/core/dev.php');
+else if (GlobalSettings::ENVIRONMENT == 'PRE')
+    require_once ('app/core/pre.php');
 require_once (Settings::PATH['core'].'/db.conf.php');
 
 $controller = 'home';

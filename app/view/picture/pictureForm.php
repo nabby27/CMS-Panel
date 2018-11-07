@@ -29,7 +29,7 @@
                 <option value="" disabled selected>Choose...</option>
                 <?php foreach($this->articleModel->getAll() as $article): ?>
                     <option value="<?php echo $article->getId(); ?>" <?php if ($article->getId() == $picture->getIdArticle()) echo 'selected'; ?> >
-                        <?php echo $article->getName(); ?> 
+                        <?php echo ucfirst($article->getName()); ?> 
                     </option>
                 <?php endforeach; ?>
             </select>

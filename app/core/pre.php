@@ -24,7 +24,7 @@ class Settings extends GlobalSettings {
         '404' => self::ROOT_PATH.'/CMS-Panel/app/view/error/404.php'
     ];
 
-    const SERVER_PATH = 'nabby27.ddns.net'.self::PATH['base'];
+    const SERVER_PATH = 'http://nabby27.ddns.net'.self::PATH['base'];
 
 }
 

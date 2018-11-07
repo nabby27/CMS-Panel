@@ -14,7 +14,7 @@
             <option value="" disabled selected>Choose...</option>
             <?php foreach($this->getAll() as $categoryFather): ?>
                 <option value="<?php echo $categoryFather->getId(); ?>" <?php if ($categoryFather->getId() == $category->getIdCategoryFather()) echo 'selected'; ?> >
-                    <?php echo $categoryFather->getName(); ?> 
+                    <?php echo ucfirst($categoryFather->getName()); ?> 
                 </option>
             <?php endforeach; ?>
         </select>
@@ -22,7 +22,7 @@
         
         <div class="form-group">
             <label>Name:</label>
-            <input type="text" name="name" value="<?php echo $category->getName(); ?>" class="form-control" placeholder="Name" required>
+            <input type="text" name="name" value="<?php echo ucfirst($category->getName()); ?>" class="form-control" placeholder="Name" required>
         </div>
     </fieldset>
    

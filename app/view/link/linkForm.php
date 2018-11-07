@@ -9,7 +9,7 @@
         <legend>Link data</legend>
         <div class="form-group">
             <label>Name:</label>
-            <input type="text" name="name" value="<?php echo $link->getName(); ?>" class="form-control" placeholder="Name" required>
+            <input type="text" name="name" value="<?php echo ucfirst($link->getName()); ?>" class="form-control" placeholder="Name" required>
         </div>
 
         <div class="form-group">
@@ -23,7 +23,7 @@
             <option value="" disabled selected>Choose...</option>
             <?php foreach($this->articleModel->getAll() as $article): ?>
                 <option value="<?php echo $article->getId(); ?>" <?php if ($article->getId() == $link->getIdArticle()) echo 'selected'; ?> >
-                    <?php echo $article->getName(); ?> 
+                    <?php echo ucfirst($article->getName()); ?> 
                 </option>
             <?php endforeach; ?>
         </select>

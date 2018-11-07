@@ -1,4 +1,13 @@
-<a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/article/create"><i class="fas fa-plus"></i> Create</a>
+<div>
+    <a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/article/create">
+        <i class="fas fa-plus"></i> Create
+    </a>
+    <?php if (isset($_REQUEST['idCategory'])) { ?>
+        <h2 class="d-flex justify-content-center text-info">
+            ARTICLES FROM CATEGORY: <b><?php echo '&nbsp'.strtoupper($this->categoryModel->getOne($_REQUEST['idCategory'])->getName()); ?></b>
+        </h2>
+    <?php } ?>
+</div>
 <hr/>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -26,11 +35,11 @@
                         <a class="btn btn-info" href="<?php echo Settings::PATH['base'] ?>/link/list/article/<?php echo $article->getId(); ?>">Links</a>
                     </td>
                     <td class="text-center"><?php echo $article->getId(); ?></td>
-                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $article->getName(); ?>"><?php echo $article->getName(); ?></td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $article->getName(); ?>"><?php echo ucfirst($article->getName()); ?></td>
                     <td class="text-center truncate"  data-toggle="tooltip" data-placement="top" title="<?php echo $article->getDescription(); ?>"><?php echo $article->getDescription(); ?></td>
                     <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $article->getPicture(); ?>"><?php echo $article->getPicture(); ?></td>
                     <?php foreach($this->categoryModel->getAll() as $category): ?>
-                        <?php if ($category->getId() == $article->getIdCategory()) echo "<td class='text-center'>".$category->getName()."</td>"; ?>
+                        <?php if ($category->getId() == $article->getIdCategory()) echo "<td class='text-center'>".ucfirst($category->getName())."</td>"; ?>
                     <?php endforeach; ?>
 
                 </tr>

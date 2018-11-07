@@ -1,4 +1,13 @@
-<a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/link/create"><i class="fas fa-plus"></i> Create</a>
+<div>
+    <a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/link/create">
+        <i class="fas fa-plus"></i> Create
+    </a>
+    <?php if (isset($_REQUEST['idArticle'])) { ?>
+        <h2 class="d-flex justify-content-center text-info">
+            LINKS FROM ARTICLE: <b><?php echo '&nbsp'.strtoupper($this->articleModel->getOne($_REQUEST['idArticle'])->getName()); ?></b>
+        </h2>
+    <?php } ?>
+</div>
 <hr/>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -18,10 +27,10 @@
                         <a class="btn btn-warning" href="<?php echo Settings::PATH['base'] ?>/link/edit/<?php echo $link->getId(); ?>">Edit</a>
                     </td>
                     <td class="text-center"><?php echo $link->getId(); ?></td>
-                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $link->getName(); ?>"><?php echo $link->getName(); ?></td>
+                    <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $link->getName(); ?>"><?php echo ucfirst($link->getName()); ?></td>
                     <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $link->getLink(); ?>"><?php echo $link->getLink(); ?></td>
                     <?php foreach($this->articleModel->getAll() as $article): ?>
-                        <?php if ($article->getId() == $link->getIdArticle()) echo "<td class='text-center' data-toggle='tooltip' data-placement='top' title='".$article->getName()."'>".$article->getName()."</td>"; ?>
+                        <?php if ($article->getId() == $link->getIdArticle()) echo "<td class='text-center' data-toggle='tooltip' data-placement='top' title='".ucfirst($article->getName())."'>".ucfirst($article->getName())."</td>"; ?>
                     <?php endforeach; ?>
 
                 </tr>

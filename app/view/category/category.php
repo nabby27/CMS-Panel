@@ -22,9 +22,9 @@
                     </td>
                     <td class="text-center"><?php echo $category->getId(); ?></td>
                     <?php foreach($categories as $categoryFather): ?>
-                        <?php if ($categoryFather->getId() == $category->getIdCategoryFather()) echo "<td class='text-center'>".$categoryFather->getName()."</td>"; ?>
+                        <?php if ($categoryFather->getId() == $category->getIdCategoryFather()) echo "<td class='text-center'>".ucfirst($categoryFather->getName())."</td>"; ?>
                     <?php endforeach; ?>
-                    <td class="text-center"><?php echo $category->getName(); ?></td>
+                    <td class="text-center"><?php echo ucfirst($category->getName()); ?></td>
                 
 
                 </tr>

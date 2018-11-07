@@ -10,12 +10,12 @@
         
         <div class="form-group">
             <label>Name:</label>
-            <input type="text" name="name" value="<?php echo $user->getName(); ?>" class="form-control" placeholder="Name" required>
+            <input type="text" name="name" value="<?php echo ucfirst($user->getName()); ?>" class="form-control" placeholder="Name" required>
         </div>
 
         <div class="form-group">
             <label>Surname:</label>
-            <input type="text" name="surname" value="<?php echo $user->getSurname(); ?>" class="form-control" placeholder="Surname" required>
+            <input type="text" name="surname" value="<?php echo ucfirst($user->getSurname()); ?>" class="form-control" placeholder="Surname" required>
         </div>
 
         <div class="form-group">
@@ -57,7 +57,7 @@
                 <option value="" disabled selected>Choose...</option>
                 <?php foreach($this->typeUserModel->getAll() as $typeUser): ?>
                     <option value="<?php echo $typeUser->getId(); ?>" <?php if ($typeUser->getId() == $user->getIdType()) echo 'selected'; ?> >
-                        <?php echo $typeUser->getTypeUser();?> 
+                        <?php echo ucfirst($typeUser->getTypeUser());?> 
                     </option>
                 <?php endforeach; ?>
             </select>

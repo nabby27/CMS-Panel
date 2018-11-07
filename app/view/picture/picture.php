@@ -1,4 +1,13 @@
-<a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/picture/create"><i class="fas fa-plus"></i> Create</a>
+<div>
+    <a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/picture/create">
+        <i class="fas fa-plus"></i> Create
+    </a>
+    <?php if (isset($_REQUEST['idArticle'])) { ?>
+        <h2 class="d-flex justify-content-center text-info">
+            PICTURES FROM ARTICLE: <b><?php echo '&nbsp'.strtoupper($this->articleModel->getOne($_REQUEST['idArticle'])->getName()); ?></b>
+        </h2>
+    <?php } ?>
+</div>
 <hr/>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -21,7 +30,7 @@
                     <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $picture->getPicture(); ?>"><?php echo $picture->getPicture(); ?></td>
                     <td class="text-center" data-toggle="tooltip" data-placement="top" title="<?php echo $picture->getDescription(); ?>"><?php echo $picture->getDescription(); ?></td>
                     <?php foreach($this->articleModel->getAll() as $article): ?>
-                        <?php if ($article->getId() == $picture->getIdArticle()) echo "<td class='text-center' data-toggle='tooltip' data-placement='top' title='".$article->getName()."'>".$article->getName()."</td>"; ?>
+                        <?php if ($article->getId() == $picture->getIdArticle()) echo "<td class='text-center' data-toggle='tooltip' data-placement='top' title='".ucfirst($article->getName())."'>".ucfirst($article->getName())."</td>"; ?>
                     <?php endforeach; ?>
 
                 </tr>

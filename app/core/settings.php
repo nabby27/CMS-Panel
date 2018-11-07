@@ -2,8 +2,8 @@
 
 class GlobalSettings {    
 
-    const ENVIRONMENT = 'DEV';
-    //const ENVIRONMENT = 'PRE';
+    //const ENVIRONMENT = 'DEV';
+    const ENVIRONMENT = 'PRE';
 
     const ERRORS = [
         'FILE_NOT_UPLOAD' => 0,

@@ -9,7 +9,7 @@
         <legend>Article data</legend>
         <div class="form-group">
             <label>Name:</label>
-            <input type="text" name="name" value="<?php echo $article->getName(); ?>" class="form-control" placeholder="Name" required>
+            <input type="text" name="name" value="<?php echo ucfirst($article->getName()); ?>" class="form-control" placeholder="Name" required>
         </div>
         
         <div class="form-group">
@@ -34,7 +34,7 @@
             <option value="" disabled selected>Choose...</option>
             <?php foreach($this->categoryModel->getAll() as $category): ?>
                 <option value="<?php echo $category->getId(); ?>" <?php if ($category->getId() == $article->getIdCategory()) echo 'selected'; ?> >
-                    <?php echo $category->getName(); ?> 
+                    <?php echo ucfirst($category->getName()); ?> 
                 </option>
             <?php endforeach; ?>
         </select>

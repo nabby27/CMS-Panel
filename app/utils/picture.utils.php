@@ -6,9 +6,10 @@ class PictureUtils {
         if (
             ($picture['type'] == 'image/gif' ||
             $picture['type'] == 'image/jpeg' ||
-            $picture['type'] == 'image/jpg' ||
-            $picture['type'] == 'image/JPG' ||
-            $picture['type'] == 'image/pjpeg') &&
+            $picture['type'] == 'image/jpg'  ||
+            $picture['type'] == 'image/JPG'  ||
+            $picture['type'] == 'image/pjpeg'||
+            $picture['type'] == 'image/png') &&
             $picture['size'] < 2000000
         ) {
             if (is_uploaded_file($picture['tmp_name'])){

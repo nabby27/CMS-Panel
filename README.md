@@ -5,6 +5,7 @@ This project consists of a CMS Panel (Content Management System) which only uses
 ##### Some of the features are: 
 > - Encryption of passwords 
 > - OOP (object-oriented programming)
+> - Sentences with PDO
 > - Architecture pattern MVC (Model, View, Controller)
 > - Upload and delete images
 > - URL friendly with .htacces

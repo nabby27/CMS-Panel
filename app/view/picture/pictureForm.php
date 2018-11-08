@@ -13,7 +13,7 @@
                 <img src="<?php echo Settings::PATH['img'].'/'.$picture->getPicture(); ?>" class="img-fluid" alt="image">
             <?php } ?>
             <div class="custom-file">
-                <input type="file" name="picture" class="custom-file-input" <?php if ($picture->getId() == null) echo required ?> >
+                <input type="file" name="picture" class="custom-file-input" <?php if ($picture->getId() == null) echo 'required' ?> >
                 <label class="custom-file-label"><?php echo ($picture->getId() != null) ? $picture->getPicture() : 'Choose file'; ?></label>
             </div>
         </div>

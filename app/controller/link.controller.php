@@ -39,6 +39,9 @@ class LinkController {
 
     public function create() {
         $link = new LinkEntity();
+        if(isset($_REQUEST['idArticle'])) {
+            $link->setIdArticle($_REQUEST['idArticle']);
+        }
 
         require_once (Settings::PATH['views'].'/link/linkForm.php');
     }

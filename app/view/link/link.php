@@ -1,5 +1,5 @@
 <div>
-    <a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/link/create">
+    <a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/link/create<?php if (isset($_REQUEST['idArticle'])) echo '/article/'.$_REQUEST['idArticle']; ?>">
         <i class="fas fa-plus"></i> Create
     </a>
     <?php if (isset($_REQUEST['idArticle'])) { ?>

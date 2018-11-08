@@ -38,7 +38,10 @@ class ArticleController {
 
     public function create() {
         $article = new ArticleEntity();
-        
+        if(isset($_REQUEST['idCategory'])) {
+            $article->setIdCategory($_REQUEST['idCategory']);
+        }
+
         require_once (Settings::PATH['views'].'/article/articleForm.php');
     }
     

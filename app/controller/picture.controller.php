@@ -39,6 +39,9 @@ class PictureController {
 
     public function create() {
         $picture = new PictureEntity();
+        if(isset($_REQUEST['idArticle'])) {
+            $picture->setIdArticle($_REQUEST['idArticle']);
+        }
 
         require_once (Settings::PATH['views'].'/picture/pictureForm.php');
     }

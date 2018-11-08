@@ -1,4 +1,6 @@
-<a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/category/create"><i class="fas fa-plus"></i> Create</a>
+<a class="btn btn-primary text-center" href="<?php echo Settings::PATH['base'] ?>/category/create">
+    <i class="fas fa-plus"></i> Create
+</a>
 <hr/>
 <div class="table-responsive">
     <table class="table table-hover">

@@ -31,6 +31,6 @@
 			</div>
 		</header>
 		
-		<div class="container py-5 my-5">
+		<div class="container-fluid py-5 my-5 px-5">
 		<br>
 		

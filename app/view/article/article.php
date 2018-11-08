@@ -17,7 +17,7 @@
             <th class="text-center"><i class="far fa-images"></i></th>
             <th class="text-center"><i class="fas fa-link"></i></th>
             <th class="text-center">ID</th><th class="text-center">NAME</th><th class="text-center">DESCRIPTION</th>
-                <th class="text-center">PICTURE</th><th class="text-center">CATEGORY</th>
+            <th class="text-center">PICTURE</th><th class="text-center">CATEGORY</th>
         </thead>
         <?php if ($articles != null) { ?>
             <?php foreach($articles as $article): ?>

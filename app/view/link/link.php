@@ -15,7 +15,7 @@
             <th class="text-center"><i class="fas fa-trash-alt"></i></th>
             <th class="text-center"><i class="far fa-edit"></i></th>
             <th class="text-center">ID</th><th class="text-center">NAME</th><th class="text-center">LINK</th>
-                <th class="text-center">ARTICLE</th>
+            <th class="text-center">ARTICLE</th>
         </thead>
         <?php if ($links != null) { ?>
             <?php foreach($links as $link): ?>

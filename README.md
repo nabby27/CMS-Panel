@@ -24,11 +24,15 @@ or server like [xamp](https://www.apachefriends.org/es/index.html)
 ### Installing
 
 First of all create the database with the script that is in the database folder. 
-Modify the `app/core/settings.php` file by putting your connection data to the database and the diferents paths. 
-Finally, copy the files in your public folder on the server.
+Modify the `app/core/settings.php` file by putting your connection data to the database and the diferents paths and environment. Finally, copy the files in your public folder on the server.
+
+> **Note 1:** Make sure that the `assets/images` folder is created and there are write permissions for all (necessary when uploading the different images).
+
+> **Note 2:** Make sure that the `rewrite` module of Apache is installed (necessary for the `.htacces` file that makes the routes friendly).
 
 ### Running
 
+Make sure that the apache server is started.
 Access to CMS Panel app in the URL of server. ex:
 
 ```

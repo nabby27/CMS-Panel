@@ -1,6 +1,9 @@
 Options +FollowSymLinks
 RewriteEngine On
 
+Allow From All
+Satisfy Any
+
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} !-d
 
